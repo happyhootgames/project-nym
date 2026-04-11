@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c0j2qlvok7oog"]
+
+[ext_resource type="PackedScene" uid="uid://xnsncnng0x3s" path="res://scenes/harvestables/_templates/_Deposit.tscn" id="1_5l83k"]
+[ext_resource type="Resource" uid="uid://dlydl30un6sun" path="res://resources/harvestables/deposits/StoneDeposit.tres" id="2_7k35s"]
+[ext_resource type="Texture2D" uid="uid://btsq5561fkbx8" path="res://assets/Foliage Pack/PNG/Default size/foliagePack_053.png" id="2_ycx36"]
+[ext_resource type="Script" uid="uid://0ynqbtxdaskc" path="res://resources/data/items/ItemData.gd" id="3_ycx36"]
+[ext_resource type="Resource" uid="uid://d18m3gg17xf5b" path="res://resources/items/minerals/StoneItem.tres" id="4_wwski"]
+
+[node name="StoneDeposit" unique_id=1612222142 instance=ExtResource("1_5l83k")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=288620171]
+position = Vector2(-1, -28)
+texture = ExtResource("2_ycx36")
+
+[node name="HarvestComponent" parent="." index="2" unique_id=1033816738]
+harvestable_node = ExtResource("2_7k35s")
+loot_items = Array[ExtResource("3_ycx36")]([ExtResource("4_wwski")])

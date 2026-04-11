@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://b10jl7s7budnr"]
+
+[ext_resource type="PackedScene" uid="uid://dlffvqqp1ie56" path="res://scenes/npcs/_NPC.tscn" id="1_kxkrw"]
+[ext_resource type="Resource" uid="uid://tot4rkklrw7a" path="res://resources/npcs/gus/GusNPC.tres" id="2_ibrhf"]
+
+[node name="GusNPC" unique_id=340429217 instance=ExtResource("1_kxkrw")]
+npc_data = ExtResource("2_ibrhf")

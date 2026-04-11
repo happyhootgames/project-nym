@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://77ux3o4id0ls"]
+
+[ext_resource type="PackedScene" uid="uid://xnsncnng0x3s" path="res://scenes/harvestables/_templates/_Deposit.tscn" id="1_65lko"]
+[ext_resource type="Texture2D" uid="uid://dmfcvvopy0p6v" path="res://assets/Foliage Pack/PNG/Default size/foliagePack_061.png" id="2_o82b2"]
+[ext_resource type="Resource" uid="uid://bmbhdicmqvmdq" path="res://resources/harvestables/deposits/GoldDeposit.tres" id="3_4sh1a"]
+[ext_resource type="Script" uid="uid://0ynqbtxdaskc" path="res://resources/data/items/ItemData.gd" id="4_fmwby"]
+[ext_resource type="Resource" uid="uid://clih518rj1dmv" path="res://resources/items/minerals/GoldItem.tres" id="5_o265t"]
+
+[node name="GoldDeposit" unique_id=1612222142 instance=ExtResource("1_65lko")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=288620171]
+position = Vector2(0, -30)
+texture = ExtResource("2_o82b2")
+
+[node name="HarvestComponent" parent="." index="2" unique_id=1033816738]
+harvestable_node = ExtResource("3_4sh1a")
+loot_items = Array[ExtResource("4_fmwby")]([ExtResource("5_o265t")])

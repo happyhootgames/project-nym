@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://csyb2aw4k3yoa"]
+
+[ext_resource type="Script" uid="uid://b03lsaj8mu1rk" path="res://ui/scripts/inventory_ui.gd" id="1_w7o80"]
+[ext_resource type="PackedScene" uid="uid://dyjpnpe0doarb" path="res://ui/InventorySlotUI.tscn" id="2_uddj1"]
+
+[node name="InventoryUI" type="Control" unique_id=1359702810 node_paths=PackedStringArray("grid_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w7o80")
+slot_scene = ExtResource("2_uddj1")
+grid_container = NodePath("InventoryPanel/MarginContainer/VBoxContainer/ScrollContainer/GridContainer")
+
+[node name="InventoryPanel" type="Panel" parent="." unique_id=1968809354]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryPanel" unique_id=2057440244]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryPanel/MarginContainer" unique_id=145139110]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="InventoryPanel/MarginContainer/VBoxContainer" unique_id=1365736604]
+layout_mode = 2
+text = "Inventory"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="InventoryPanel/MarginContainer/VBoxContainer" unique_id=1242851741]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="InventoryPanel/MarginContainer/VBoxContainer/ScrollContainer" unique_id=800930915]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 5

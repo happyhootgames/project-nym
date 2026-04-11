@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="QuestData" format=3 uid="uid://75wkjkra4ney"]
+
+[ext_resource type="Resource" uid="uid://ev7ysedxtagi" path="res://resources/npcs/hank/HankNPC.tres" id="1_hjwvt"]
+[ext_resource type="Script" uid="uid://0rqbp4cvakyu" path="res://resources/data/items/ItemStack.gd" id="2_i7itg"]
+[ext_resource type="Resource" uid="uid://xtjk6s2nj8gi" path="res://resources/items/flowers/PoppyItem.tres" id="3_w34xr"]
+[ext_resource type="Resource" uid="uid://b4oyu3mc8ncdy" path="res://resources/items/gifts/GiftItem.tres" id="4_a8sb5"]
+[ext_resource type="Script" uid="uid://cpp7npivag8su" path="res://resources/data/quest/QuestData.gd" id="5_tgi2h"]
+[ext_resource type="Script" uid="uid://cbq5gjhhdgl5x" path="res://resources/data/quest/QuestCondition.gd" id="6_i7itg"]
+
+[sub_resource type="Resource" id="Resource_3cl87"]
+script = ExtResource("2_i7itg")
+item_data = ExtResource("3_w34xr")
+quantity = 3
+metadata/_custom_type_script = "uid://0rqbp4cvakyu"
+
+[sub_resource type="Resource" id="Resource_80e2b"]
+script = ExtResource("2_i7itg")
+item_data = ExtResource("4_a8sb5")
+quantity = 1
+metadata/_custom_type_script = "uid://0rqbp4cvakyu"
+
+[sub_resource type="Resource" id="Resource_w34xr"]
+script = ExtResource("6_i7itg")
+friendship_value = 1
+metadata/_custom_type_script = "uid://cbq5gjhhdgl5x"
+
+[resource]
+script = ExtResource("5_tgi2h")
+id = "hank_get_poppies"
+title = "Des fleurs pour la dulcinée"
+description = "Cueille 3 coquelicots pour que Hank puisse les offrir à son amoureuse"
+giver_npc = ExtResource("1_hjwvt")
+receiver_npc = ExtResource("1_hjwvt")
+unlock_conditions = Array[ExtResource("6_i7itg")]([SubResource("Resource_w34xr")])
+required_items = Array[ExtResource("2_i7itg")]([SubResource("Resource_3cl87")])
+reward_items = Array[ExtResource("2_i7itg")]([SubResource("Resource_80e2b")])
+increment_friendship_amount = 1
+metadata/_custom_type_script = "uid://cpp7npivag8su"

@@ -1,0 +1,168 @@
+[gd_scene format=3 uid="uid://665vegcop2j2"]
+
+[ext_resource type="Script" uid="uid://dv3pdr0gos6yt" path="res://scenes/player/player.gd" id="1_v6fml"]
+[ext_resource type="Texture2D" uid="uid://cdw7ta283734w" path="res://assets/Platformer/Platformer Assets Extra Animations & Enemies/Alien sprites/alienGreen_climb1.png" id="2_6eyey"]
+[ext_resource type="Texture2D" uid="uid://cobv2vk4gpsuk" path="res://assets/Platformer/Platformer Assets Extra Animations & Enemies/Alien sprites/alienGreen_hurt.png" id="2_70d11"]
+[ext_resource type="Texture2D" uid="uid://dayren7xhxmnd" path="res://assets/Platformer/Platformer Assets Extra Animations & Enemies/Alien sprites/alienGreen_duck.png" id="2_cw2d6"]
+[ext_resource type="Texture2D" uid="uid://5w3iv720se1n" path="res://assets/Platformer/Platformer Assets Extra Animations & Enemies/Alien sprites/alienGreen_stand.png" id="2_qu4a1"]
+[ext_resource type="Texture2D" uid="uid://bimm8koi86o0t" path="res://assets/Platformer/Platformer Assets Extra Animations & Enemies/Alien sprites/alienGreen_jump.png" id="3_70d11"]
+[ext_resource type="Texture2D" uid="uid://qxsmvbxu4olx" path="res://assets/Platformer/Platformer Assets Extra Animations & Enemies/Alien sprites/alienGreen_climb2.png" id="3_d3wef"]
+[ext_resource type="Texture2D" uid="uid://dnmvxknydci6s" path="res://assets/Platformer/Platformer Assets Extra Animations & Enemies/Alien sprites/alienGreen_walk1.png" id="3_sweqy"]
+[ext_resource type="Texture2D" uid="uid://b8do8dqpnppeo" path="res://assets/Platformer/Platformer Assets Extra Animations & Enemies/Alien sprites/alienGreen_walk2.png" id="4_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://b8fco88etw8w2" path="res://assets/Platformer/Platformer Assets Extra Animations & Enemies/Alien sprites/alienGreen_swim2.png" id="4_khinc"]
+[ext_resource type="Script" uid="uid://ck5efg4nmcl1n" path="res://scenes/player/camera_2d.gd" id="11_5stf6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7iby"]
+atlas = ExtResource("2_6eyey")
+region = Rect2(0, 0, 66, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rnld"]
+atlas = ExtResource("3_d3wef")
+region = Rect2(0, 0, 66, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4126"]
+atlas = ExtResource("2_cw2d6")
+region = Rect2(0, 0, 69, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3wef"]
+atlas = ExtResource("2_70d11")
+region = Rect2(0, 0, 69, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkdrv"]
+atlas = ExtResource("4_khinc")
+region = Rect2(0, 0, 70, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cw2d6"]
+atlas = ExtResource("2_qu4a1")
+region = Rect2(0, 0, 66, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khinc"]
+atlas = ExtResource("3_70d11")
+region = Rect2(0, 0, 67, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bruh7"]
+atlas = ExtResource("3_sweqy")
+region = Rect2(0, 0, 68, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6eyey"]
+atlas = ExtResource("4_2hs0m")
+region = Rect2(0, 0, 70, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d3wef"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7iby")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rnld")
+}],
+"loop": true,
+"name": &"climb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4126")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3wef")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkdrv")
+}],
+"loop": true,
+"name": &"glide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cw2d6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khinc")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bruh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6eyey")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u1c27"]
+radius = 24.0
+height = 90.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_srp4u"]
+radius = 7.0
+height = 96.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7oing"]
+size = Vector2(83, 100)
+
+[node name="Player" type="CharacterBody2D" unique_id=1800804725 node_paths=PackedStringArray("animated_sprite", "climb_detector") groups=["player"]]
+collision_mask = 20
+script = ExtResource("1_v6fml")
+animated_sprite = NodePath("AnimatedSprite2D")
+climb_detector = NodePath("ClimbDetectorArea2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1829774189]
+position = Vector2(0, -47)
+sprite_frames = SubResource("SpriteFrames_d3wef")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1517012455]
+position = Vector2(0, -46)
+shape = SubResource("CapsuleShape2D_u1c27")
+debug_color = Color(0.9999998, 0.019049501, 0.003096925, 0.41960785)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2030046213]
+script = ExtResource("11_5stf6")
+house_zoom = Vector2(1.4, 1.4)
+
+[node name="ClimbDetectorArea2D" type="Area2D" parent="." unique_id=962967493]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClimbDetectorArea2D" unique_id=1766658682]
+position = Vector2(-1, -45)
+shape = SubResource("CapsuleShape2D_srp4u")
+
+[node name="InteractableDetectionArea2D" type="Area2D" parent="." unique_id=1104649811]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableDetectionArea2D" unique_id=1212830177]
+position = Vector2(18.5, -45)
+shape = SubResource("RectangleShape2D_7oing")
+debug_color = Color(0.6876446, 0.49988514, 1.92523e-07, 0.41960785)
+
+[connection signal="body_entered" from="ClimbDetectorArea2D" to="." method="_on_climb_detector_area_2d_body_entered"]
+[connection signal="body_exited" from="ClimbDetectorArea2D" to="." method="_on_climb_detector_area_2d_body_exited"]
+[connection signal="body_entered" from="InteractableDetectionArea2D" to="." method="_on_interactable_detection_area_2d_body_entered"]
+[connection signal="body_exited" from="InteractableDetectionArea2D" to="." method="_on_interactable_detection_area_2d_body_exited"]

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DialogueEntry" format=3 uid="uid://36gg8ghm8q7q"]
+
+[ext_resource type="Resource" uid="uid://l5glbygdukvv" path="res://resources/npcs/hank/dialogues/branches/0_first_meeting/b_hank_first_meeting.tres" id="1_dbbck"]
+[ext_resource type="Script" uid="uid://isyg5oja3w7b" path="res://resources/data/dialogue/DialogueCondition.gd" id="2_4mqd5"]
+[ext_resource type="Script" uid="uid://54g80cfmn845" path="res://resources/data/dialogue/DialogueEntry.gd" id="3_e51a7"]
+
+[sub_resource type="Resource" id="Resource_3pbhf"]
+script = ExtResource("2_4mqd5")
+type = 5
+friendship_value = 1
+metadata/_custom_type_script = "uid://isyg5oja3w7b"
+
+[resource]
+script = ExtResource("3_e51a7")
+id = "hank_first_meeting"
+branch = ExtResource("1_dbbck")
+conditions = Array[ExtResource("2_4mqd5")]([SubResource("Resource_3pbhf")])
+metadata/_custom_type_script = "uid://54g80cfmn845"

@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://dgdhc3sr7i01t"]
+
+[ext_resource type="Script" uid="uid://bl73kifschryu" path="res://ui/scripts/exploring_ui.gd" id="1_b7r5o"]
+[ext_resource type="PackedScene" uid="uid://cspotdl5bni25" path="res://ui/QuestFollowupUI.tscn" id="2_6rvgi"]
+
+[node name="ExploringUI" type="Control" unique_id=1150668020 node_paths=PackedStringArray("helper_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b7r5o")
+helper_label = NodePath("VBoxContainer/PromptLabel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1126390890]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=2127681256]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="QuestFollowupUi" parent="VBoxContainer/HBoxContainer" unique_id=1063076716 instance=ExtResource("2_6rvgi")]
+layout_mode = 2
+
+[node name="PromptLabel" type="Label" parent="VBoxContainer" unique_id=47945851]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 36
+text = "Prompt Label"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1037180257]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 40
+text = "Inventory (I)"
+horizontal_alignment = 1
+vertical_alignment = 1

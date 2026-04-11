@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://clih518rj1dmv"]
+
+[ext_resource type="Resource" uid="uid://bvf0vu2lfdk6j" path="res://resources/item_categories/Mineral.tres" id="1_g7dn1"]
+[ext_resource type="Texture2D" uid="uid://hnb2qrttmylu" path="res://assets/testing_placeholders/cozy_grove/items_icons/Small_gold_ore.webp" id="2_dno8b"]
+[ext_resource type="Script" uid="uid://0ynqbtxdaskc" path="res://resources/data/items/ItemData.gd" id="3_x4dn2"]
+
+[resource]
+script = ExtResource("3_x4dn2")
+id = &"gold"
+display_name = "Gold"
+icon = ExtResource("2_dno8b")
+category = ExtResource("1_g7dn1")
+metadata/_custom_type_script = "uid://0ynqbtxdaskc"

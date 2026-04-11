@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogueNode" format=3 uid="uid://ciu24qxfmcixi"]
+
+[ext_resource type="Script" uid="uid://cu6upuphii38p" path="res://resources/data/dialogue/DialogueActionData.gd" id="1_w1vwv"]
+[ext_resource type="Script" uid="uid://bvqtxerutfcjn" path="res://resources/data/dialogue/DialogueChoice.gd" id="2_g400l"]
+[ext_resource type="Script" uid="uid://ck0fe2j5xtmh3" path="res://resources/data/dialogue/DialogueNode.gd" id="3_vhmfj"]
+
+[sub_resource type="Resource" id="Resource_lgro2"]
+script = ExtResource("1_w1vwv")
+type = 1
+metadata/_custom_type_script = "uid://cu6upuphii38p"
+
+[resource]
+script = ExtResource("3_vhmfj")
+id = "hank_small_talk_1_1"
+text = "Hello, belle journée, non?"
+actions = Array[ExtResource("1_w1vwv")]([SubResource("Resource_lgro2")])
+metadata/_custom_type_script = "uid://ck0fe2j5xtmh3"

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="DialogueNode" format=3 uid="uid://bv7dntgn8wyau"]
+
+[ext_resource type="Script" uid="uid://cu6upuphii38p" path="res://resources/data/dialogue/DialogueActionData.gd" id="1_lccmh"]
+[ext_resource type="Script" uid="uid://bvqtxerutfcjn" path="res://resources/data/dialogue/DialogueChoice.gd" id="2_0x8d0"]
+[ext_resource type="Script" uid="uid://ck0fe2j5xtmh3" path="res://resources/data/dialogue/DialogueNode.gd" id="3_7b03t"]
+
+[sub_resource type="Resource" id="Resource_5d4pc"]
+script = ExtResource("1_lccmh")
+type = 3
+quest_id = "hank_get_poppies"
+metadata/_custom_type_script = "uid://cu6upuphii38p"
+
+[sub_resource type="Resource" id="Resource_cd8yv"]
+script = ExtResource("1_lccmh")
+type = 1
+metadata/_custom_type_script = "uid://cu6upuphii38p"
+
+[resource]
+script = ExtResource("3_7b03t")
+id = "hank_poppy_quest_2_ready_to_be_completed_2"
+text = "TROP BIEN! Merci beaucoup ! Voilà pour toi ;)"
+actions = Array[ExtResource("1_lccmh")]([SubResource("Resource_5d4pc"), SubResource("Resource_cd8yv")])
+metadata/_custom_type_script = "uid://ck0fe2j5xtmh3"

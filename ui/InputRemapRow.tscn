@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dmj68xl0jwh5y"]
+
+[ext_resource type="Script" uid="uid://dnttx4shi715f" path="res://ui/scripts/input_remap_row.gd" id="1_j2br3"]
+
+[node name="InputRemapRow" type="Control" unique_id=1039604522 node_paths=PackedStringArray("action_label", "rebind_button")]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j2br3")
+action_label = NodePath("HBoxContainer/ActionLabel")
+rebind_button = NodePath("HBoxContainer/RebindButton")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1116435408]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="ActionLabel" type="Label" parent="HBoxContainer" unique_id=323888366]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "action"
+
+[node name="RebindButton" type="Button" parent="HBoxContainer" unique_id=2010958049]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Shift"
+
+[connection signal="pressed" from="HBoxContainer/RebindButton" to="." method="_on_rebind_button_pressed"]

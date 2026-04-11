@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://lgj00oymemin"]
+
+[ext_resource type="Script" uid="uid://fphu5fvbn4hn" path="res://scenes/components/harvestable_component.gd" id="1_1cdud"]
+
+[node name="HarvestComponent" type="Node2D" unique_id=1033816738]
+script = ExtResource("1_1cdud")
+
+[node name="RespawnTimer" type="Timer" parent="." unique_id=1680928263]
+
+[connection signal="timeout" from="RespawnTimer" to="." method="respawn"]

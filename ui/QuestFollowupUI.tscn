@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cspotdl5bni25"]
+
+[ext_resource type="Script" uid="uid://d6tffm7w4amu" path="res://ui/quest_followup_ui.gd" id="1_x54qc"]
+[ext_resource type="PackedScene" uid="uid://lvevofld8crp" path="res://ui/QuestFollowupItemUI.tscn" id="2_etxbi"]
+
+[node name="QuestFollowupUI" type="Control" unique_id=1063076716 node_paths=PackedStringArray("quests_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x54qc")
+quest_item_scene = ExtResource("2_etxbi")
+quests_container = NodePath("QuestsVBoxContainer")
+
+[node name="QuestsVBoxContainer" type="VBoxContainer" parent="." unique_id=1076447913]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2

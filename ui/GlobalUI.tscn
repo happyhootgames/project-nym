@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bracpc8ta5aqy"]
+
+[ext_resource type="Script" uid="uid://16ujtbfnpbm7" path="res://ui/scripts/global_ui.gd" id="1_3y6gh"]
+[ext_resource type="PackedScene" uid="uid://csyb2aw4k3yoa" path="res://ui/InventoryUI.tscn" id="2_3vod6"]
+[ext_resource type="PackedScene" uid="uid://dgdhc3sr7i01t" path="res://ui/ExploringUI.tscn" id="2_j2hib"]
+[ext_resource type="PackedScene" uid="uid://dgwpc5uh3sr8y" path="res://ui/DialogueUI.tscn" id="3_j2hib"]
+[ext_resource type="PackedScene" uid="uid://dtgw20rwdy1u" path="res://ui/ControlsMenuUI.tscn" id="5_mxex5"]
+
+[node name="GlobalUI" type="CanvasLayer" unique_id=301427534 node_paths=PackedStringArray("exploring_ui", "dialogue_ui", "inventory_ui", "controls_menu_ui")]
+script = ExtResource("1_3y6gh")
+exploring_ui = NodePath("MarginContainer/ExploringUI")
+dialogue_ui = NodePath("MarginContainer/DialogueUI")
+inventory_ui = NodePath("MarginContainer/InventoryUI")
+controls_menu_ui = NodePath("MarginContainer/ControlsMenuUI")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=197847940]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="ExploringUI" parent="MarginContainer" unique_id=1150668020 instance=ExtResource("2_j2hib")]
+layout_mode = 2
+
+[node name="DialogueUI" parent="MarginContainer" unique_id=589723309 instance=ExtResource("3_j2hib")]
+visible = false
+layout_mode = 2
+
+[node name="InventoryUI" parent="MarginContainer" unique_id=1359702810 instance=ExtResource("2_3vod6")]
+visible = false
+layout_mode = 2
+
+[node name="ControlsMenuUI" parent="MarginContainer" unique_id=322436397 instance=ExtResource("5_mxex5")]
+visible = false
+layout_mode = 2

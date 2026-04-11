@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b0h4wqtwxgphj"]
+
+[ext_resource type="Resource" uid="uid://cmaf52afgdrbf" path="res://resources/item_categories/Fruit.tres" id="1_brgqj"]
+[ext_resource type="Texture2D" uid="uid://dwm8r0rp3cqff" path="res://assets/testing_placeholders/cozy_grove/items_icons/Concorde_Pear.webp" id="2_brgqj"]
+[ext_resource type="Script" uid="uid://0ynqbtxdaskc" path="res://resources/data/items/ItemData.gd" id="3_0u3jj"]
+
+[resource]
+script = ExtResource("3_0u3jj")
+id = &"pear"
+display_name = "Pear"
+icon = ExtResource("2_brgqj")
+category = ExtResource("1_brgqj")
+metadata/_custom_type_script = "uid://0ynqbtxdaskc"

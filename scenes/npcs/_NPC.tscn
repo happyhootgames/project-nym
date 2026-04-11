@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dlffvqqp1ie56"]
+
+[ext_resource type="Script" uid="uid://cfpb572q745de" path="res://scenes/npcs/_npc.gd" id="1_o8c52"]
+[ext_resource type="Texture2D" uid="uid://cijx5shsw805j" path="res://assets/testing_placeholders/bear_and_breakfast/characters/Anni_icon.webp" id="2_p7tyu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o8c52"]
+radius = 26.0
+height = 186.0
+
+[node name="_NPC" type="CharacterBody2D" unique_id=340429217 node_paths=PackedStringArray("sprite_2d", "name_anchor", "name_label")]
+collision_layer = 66
+collision_mask = 4
+script = ExtResource("1_o8c52")
+sprite_2d = NodePath("Sprite2D")
+name_anchor = NodePath("Marker2D")
+name_label = NodePath("Marker2D/Label")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=716758563]
+position = Vector2(-2, -72)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_p7tyu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1074943148]
+position = Vector2(0, 3)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_o8c52")
+debug_color = Color(0.65977955, 0.5153691, 0, 0.41960785)
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=57187961]
+position = Vector2(0, -300)
+
+[node name="Label" type="Label" parent="Marker2D" unique_id=956085100]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 60
+text = "NPC"
+horizontal_alignment = 1
+vertical_alignment = 1

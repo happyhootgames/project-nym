@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="HarvestResource" format=3 uid="uid://byd01p5pdl6jx"]
+
+[ext_resource type="Script" uid="uid://cx1dnupdphjwv" path="res://resources/data/harvest/HarvestableNode.gd" id="1_a8atg"]
+
+[resource]
+script = ExtResource("1_a8atg")
+id = &"pine_tree"
+display_name = "Pine Tree"
+metadata/_custom_type_script = "uid://cx1dnupdphjwv"

@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://bhh4fffjlyk5q"]
+
+[ext_resource type="Script" uid="uid://5tyw6uttlx1a" path="res://scenes/house.gd" id="1_ispqn"]
+[ext_resource type="Texture2D" uid="uid://c8m0pihdtt55o" path="res://assets/House_Interior.png" id="2_etd6b"]
+[ext_resource type="Texture2D" uid="uid://cuct8x3metbni" path="res://assets/House_Exterior.png" id="3_lr155"]
+[ext_resource type="Texture2D" uid="uid://8bcbbyreox4g" path="res://assets/House_Door.png" id="4_cmj1i"]
+[ext_resource type="Script" uid="uid://y2mgffmokidc" path="res://scenes/door.gd" id="4_lr155"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ea8vi"]
+size = Vector2(1309, 84)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kjlmf"]
+size = Vector2(1309, 84)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l6do8"]
+size = Vector2(131, 795)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lr155"]
+size = Vector2(1275, 56.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwrc1"]
+size = Vector2(225, 364)
+
+[node name="House" type="Node2D" unique_id=1577512885 node_paths=PackedStringArray("outside_sprite", "inside_sprite", "interior_collisions")]
+script = ExtResource("1_ispqn")
+outside_sprite = NodePath("Outside/OutsideSprite2D")
+inside_sprite = NodePath("Inside/InsideSprite2D")
+interior_collisions = [NodePath("Inside/CollisionShape2D"), NodePath("Inside/CollisionShape2D2"), NodePath("Inside/CollisionShape2D3"), NodePath("Inside/CollisionShape2D4")]
+
+[node name="Inside" type="StaticBody2D" parent="." unique_id=546999638]
+collision_layer = 4
+collision_mask = 0
+
+[node name="InsideSprite2D" type="Sprite2D" parent="Inside" unique_id=96413557]
+position = Vector2(0, -362)
+texture = ExtResource("2_etd6b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside" unique_id=1750093648]
+position = Vector2(0, 38)
+shape = SubResource("RectangleShape2D_ea8vi")
+disabled = true
+debug_color = Color(0.9998103, 0, 0.11587644, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Inside" unique_id=13488616]
+position = Vector2(0, -760)
+shape = SubResource("RectangleShape2D_kjlmf")
+disabled = true
+debug_color = Color(0.9998103, 0, 0.11587644, 0.41960785)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Inside" unique_id=579021054]
+position = Vector2(-700, -355)
+shape = SubResource("RectangleShape2D_l6do8")
+disabled = true
+debug_color = Color(0.9998103, 0, 0.11587644, 0.41960785)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Inside" unique_id=1764733844]
+position = Vector2(700, -355)
+shape = SubResource("RectangleShape2D_l6do8")
+disabled = true
+debug_color = Color(0.9998103, 0, 0.11587644, 0.41960785)
+
+[node name="Outside" type="StaticBody2D" parent="." unique_id=1376734747]
+collision_layer = 16
+collision_mask = 0
+
+[node name="OutsideSprite2D" type="Sprite2D" parent="Outside" unique_id=1750627149]
+position = Vector2(0, -362)
+texture = ExtResource("3_lr155")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Outside" unique_id=829859787]
+position = Vector2(-0.5, -692.25)
+shape = SubResource("RectangleShape2D_lr155")
+one_way_collision = true
+
+[node name="Door" type="StaticBody2D" parent="." unique_id=1218748771 node_paths=PackedStringArray("parent_house")]
+position = Vector2(0, -362)
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("4_lr155")
+parent_house = NodePath("..")
+
+[node name="DoorSprite2D" type="Sprite2D" parent="Door" unique_id=622132683]
+texture = ExtResource("4_cmj1i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door" unique_id=185397392]
+position = Vector2(369.5, 173)
+shape = SubResource("RectangleShape2D_nwrc1")
+debug_color = Color(0.6278951, 0.5311628, 0, 0.41960785)

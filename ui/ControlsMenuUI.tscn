@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dtgw20rwdy1u"]
+
+[ext_resource type="Script" uid="uid://grrl0tpfmk85" path="res://ui/scripts/controls_menu_ui.gd" id="1_e14t8"]
+[ext_resource type="PackedScene" uid="uid://dmj68xl0jwh5y" path="res://ui/InputRemapRow.tscn" id="2_13a3k"]
+
+[node name="ControlsMenuUI" type="Control" unique_id=322436397 node_paths=PackedStringArray("actions_container", "status_label", "reset_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e14t8")
+actions_container = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ActionsContainer")
+status_label = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/StatusLabel")
+reset_button = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ResetToDefaultButton")
+action_row_scene = ExtResource("2_13a3k")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1306111273]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 200
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=1684918655]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=279727921]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer" unique_id=1558983962]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1107210824]
+layout_mode = 2
+text = "Rebindings"
+
+[node name="ActionsContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=341459619]
+layout_mode = 2
+
+[node name="StatusLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=373409433]
+layout_mode = 2
+
+[node name="ResetToDefaultButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=797244050]
+layout_mode = 2
+text = "Reset to default"
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ResetToDefaultButton" to="." method="_on_reset_to_default_button_pressed"]

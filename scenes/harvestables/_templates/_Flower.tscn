@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://pbbcitlgmc01"]
+
+[ext_resource type="Script" uid="uid://bicmxe422fim1" path="res://scenes/harvestables/_templates/_flower.gd" id="1_fi1dq"]
+[ext_resource type="PackedScene" uid="uid://lgj00oymemin" path="res://scenes/components/HarvestableComponent.tscn" id="3_puc03"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0thn7"]
+radius = 11.0
+height = 44.0
+
+[node name="_Flower" type="StaticBody2D" unique_id=1612222142 node_paths=PackedStringArray("harvest_component")]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("1_fi1dq")
+harvest_component = NodePath("HarvestComponent")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=288620171]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=986263407]
+position = Vector2(0, -11)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_0thn7")
+debug_color = Color(0.646824, 0.5219783, 0, 0.41960785)
+
+[node name="HarvestComponent" parent="." unique_id=1033816738 node_paths=PackedStringArray("collision_shape") instance=ExtResource("3_puc03")]
+collision_shape = NodePath("../CollisionShape2D")
+
+[node name="Label" type="Label" parent="." unique_id=1708114377]
+offset_left = -99.0
+offset_top = -131.0
+offset_right = 100.0
+offset_bottom = -73.0
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 55
+text = "Flower"
+horizontal_alignment = 1

@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://lvevofld8crp"]
+
+[ext_resource type="Script" uid="uid://bth0ivtttdhec" path="res://ui/quest_followup_item_ui.gd" id="1_rg1wd"]
+
+[node name="QuestFollowupItemUi" type="Control" unique_id=174514206 node_paths=PackedStringArray("quest_name_label", "quest_status_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rg1wd")
+quest_name_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/QuestNameLabel")
+quest_status_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/QuestStatusLabel")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2117135029]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=5958309]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=193103726]
+layout_mode = 2
+
+[node name="QuestNameLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=647590523]
+layout_mode = 2
+text = "QuestName"
+
+[node name="QuestStatusLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1993173912]
+layout_mode = 2
+text = "Item x/x"

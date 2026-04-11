@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dmqilacsj0lf6"]
+
+[ext_resource type="PackedScene" uid="uid://pbbcitlgmc01" path="res://scenes/harvestables/_templates/_Flower.tscn" id="1_i710r"]
+[ext_resource type="Texture2D" uid="uid://dykylxeyn0d32" path="res://assets/Foliage Pack/PNG/Default size/foliagePack_003.png" id="2_i710r"]
+[ext_resource type="Resource" uid="uid://cnn5po0cybs57" path="res://resources/harvestables/flowers/LilacFlower.tres" id="3_syx5u"]
+[ext_resource type="Script" uid="uid://0ynqbtxdaskc" path="res://resources/data/items/ItemData.gd" id="4_5g0p7"]
+[ext_resource type="Resource" uid="uid://vq7qll1ovwkv" path="res://resources/items/flowers/LilacItem.tres" id="5_at8db"]
+
+[node name="LilacFlower" unique_id=1612222142 instance=ExtResource("1_i710r")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=288620171]
+position = Vector2(0, -26)
+texture = ExtResource("2_i710r")
+
+[node name="HarvestComponent" parent="." index="2" unique_id=1033816738]
+harvestable_node = ExtResource("3_syx5u")
+loot_items = Array[ExtResource("4_5g0p7")]([ExtResource("5_at8db")])
+
+[node name="Label" parent="." index="3" unique_id=1708114377]
+visible = false

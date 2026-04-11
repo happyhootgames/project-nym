@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://3e1lh1k4ktle"]
+
+[ext_resource type="PackedScene" uid="uid://dlffvqqp1ie56" path="res://scenes/npcs/_NPC.tscn" id="1_gvlwf"]
+[ext_resource type="Resource" uid="uid://ev7ysedxtagi" path="res://resources/npcs/hank/HankNPC.tres" id="2_2h3xh"]
+
+[node name="HankNPC" unique_id=340429217 instance=ExtResource("1_gvlwf")]
+npc_data = ExtResource("2_2h3xh")

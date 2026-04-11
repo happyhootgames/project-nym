@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DialogueNode" format=3 uid="uid://ca5rqe22mavr4"]
+
+[ext_resource type="Script" uid="uid://cu6upuphii38p" path="res://resources/data/dialogue/DialogueActionData.gd" id="1_mfx74"]
+[ext_resource type="Script" uid="uid://bvqtxerutfcjn" path="res://resources/data/dialogue/DialogueChoice.gd" id="2_k4xar"]
+[ext_resource type="Resource" uid="uid://cseh42b84obkr" path="res://resources/npcs/hank/dialogues/branches/q_poppy_quest/nodes/n_hank_poppy_quest_0_not_started_3.tres" id="3_mfx74"]
+[ext_resource type="Script" uid="uid://ck0fe2j5xtmh3" path="res://resources/data/dialogue/DialogueNode.gd" id="4_67cuv"]
+
+[sub_resource type="Resource" id="Resource_2ttc2"]
+script = ExtResource("1_mfx74")
+next_node = ExtResource("3_mfx74")
+metadata/_custom_type_script = "uid://cu6upuphii38p"
+
+[sub_resource type="Resource" id="Resource_sxi0k"]
+script = ExtResource("2_k4xar")
+text = "Des fleurs?"
+actions = Array[ExtResource("1_mfx74")]([SubResource("Resource_2ttc2")])
+metadata/_custom_type_script = "uid://bvqtxerutfcjn"
+
+[resource]
+script = ExtResource("4_67cuv")
+id = "hank_poppy_quest_0_not_started_2"
+text = "Tu vois j'ai une amoureuse et on a un rendez-vous un peu plus tard mais j'ai besoin de quelque chose à offrir. Tu as une idée?"
+has_choices = true
+choices = Array[ExtResource("2_k4xar")]([SubResource("Resource_sxi0k")])
+metadata/_custom_type_script = "uid://ck0fe2j5xtmh3"

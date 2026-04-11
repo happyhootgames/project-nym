@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://dyjpnpe0doarb"]
+
+[ext_resource type="Script" uid="uid://d1npw2r6yh71a" path="res://ui/scripts/inventory_slot_ui.gd" id="1_q4h7n"]
+[ext_resource type="Texture2D" uid="uid://dq8v36a06jibn" path="res://assets/testing_placeholders/cozy_grove/items_icons/Red_Poppy_Wild.webp" id="2_s1pdi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q4h7n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s1pdi"]
+
+[node name="InventorySlotUI" type="PanelContainer" unique_id=163100911 node_paths=PackedStringArray("icon_texture_rect", "quantity_label")]
+custom_minimum_size = Vector2(65, 65)
+offset_right = 138.0
+offset_bottom = 165.0
+focus_mode = 2
+script = ExtResource("1_q4h7n")
+icon_texture_rect = NodePath("MarginContainer/Control/IconTextureRect")
+quantity_label = NodePath("MarginContainer/Control/QuantityLabel")
+normal_style = SubResource("StyleBoxEmpty_q4h7n")
+selected_style = SubResource("StyleBoxFlat_s1pdi")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1094964809]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Control" type="Control" parent="MarginContainer" unique_id=1885249793]
+layout_mode = 2
+
+[node name="IconTextureRect" type="TextureRect" parent="MarginContainer/Control" unique_id=666004337]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_s1pdi")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="QuantityLabel" type="Label" parent="MarginContainer/Control" unique_id=715066157]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = -55.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 20
+text = "10"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

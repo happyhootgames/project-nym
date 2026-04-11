@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="DialogueNode" format=3 uid="uid://dt4bva5uv8tq4"]
+
+[ext_resource type="Script" uid="uid://cu6upuphii38p" path="res://resources/data/dialogue/DialogueActionData.gd" id="1_7j3qu"]
+[ext_resource type="Script" uid="uid://bvqtxerutfcjn" path="res://resources/data/dialogue/DialogueChoice.gd" id="2_tngo7"]
+[ext_resource type="Script" uid="uid://ck0fe2j5xtmh3" path="res://resources/data/dialogue/DialogueNode.gd" id="4_gfkt7"]
+[ext_resource type="Resource" uid="uid://bv7dntgn8wyau" path="res://resources/npcs/hank/dialogues/branches/q_poppy_quest/nodes/n_hank_poppy_quest_2_ready_to_be_completed_2.tres" id="4_tngo7"]
+
+[sub_resource type="Resource" id="Resource_844d7"]
+script = ExtResource("1_7j3qu")
+next_node = ExtResource("4_tngo7")
+metadata/_custom_type_script = "uid://cu6upuphii38p"
+
+[sub_resource type="Resource" id="Resource_2bvw5"]
+script = ExtResource("2_tngo7")
+text = "Oui, les voici"
+actions = Array[ExtResource("1_7j3qu")]([SubResource("Resource_844d7")])
+metadata/_custom_type_script = "uid://bvqtxerutfcjn"
+
+[sub_resource type="Resource" id="Resource_tngo7"]
+script = ExtResource("1_7j3qu")
+type = 1
+metadata/_custom_type_script = "uid://cu6upuphii38p"
+
+[sub_resource type="Resource" id="Resource_4i76r"]
+script = ExtResource("2_tngo7")
+text = "Pas encore désolé"
+actions = Array[ExtResource("1_7j3qu")]([SubResource("Resource_tngo7")])
+metadata/_custom_type_script = "uid://bvqtxerutfcjn"
+
+[resource]
+script = ExtResource("4_gfkt7")
+id = "hank_poppy_quest_2_ready_to_be_completed_1"
+text = "Alors tu as mes fleurs?"
+has_choices = true
+choices = Array[ExtResource("2_tngo7")]([SubResource("Resource_2bvw5"), SubResource("Resource_4i76r")])
+metadata/_custom_type_script = "uid://ck0fe2j5xtmh3"

@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="QuestData" format=3 uid="uid://be1jtpxnov034"]
+
+[ext_resource type="Script" uid="uid://0rqbp4cvakyu" path="res://resources/data/items/ItemStack.gd" id="1_egv0r"]
+[ext_resource type="Resource" uid="uid://tot4rkklrw7a" path="res://resources/npcs/gus/GusNPC.tres" id="1_l0c68"]
+[ext_resource type="Script" uid="uid://cpp7npivag8su" path="res://resources/data/quest/QuestData.gd" id="2_s44kv"]
+[ext_resource type="Resource" uid="uid://dojjpjrvtcrwb" path="res://resources/items/woods/OakWoodItem.tres" id="3_7m2at"]
+[ext_resource type="Resource" uid="uid://b4oyu3mc8ncdy" path="res://resources/items/gifts/GiftItem.tres" id="4_1mlhk"]
+[ext_resource type="Script" uid="uid://cbq5gjhhdgl5x" path="res://resources/data/quest/QuestCondition.gd" id="6_7m2at"]
+
+[sub_resource type="Resource" id="Resource_3grqi"]
+script = ExtResource("1_egv0r")
+item_data = ExtResource("3_7m2at")
+quantity = 3
+metadata/_custom_type_script = "uid://0rqbp4cvakyu"
+
+[sub_resource type="Resource" id="Resource_52d6a"]
+script = ExtResource("1_egv0r")
+item_data = ExtResource("4_1mlhk")
+quantity = 1
+metadata/_custom_type_script = "uid://0rqbp4cvakyu"
+
+[sub_resource type="Resource" id="Resource_1mlhk"]
+script = ExtResource("6_7m2at")
+friendship_value = 1
+metadata/_custom_type_script = "uid://cbq5gjhhdgl5x"
+
+[resource]
+script = ExtResource("2_s44kv")
+id = "gus_get_branches"
+title = "Des branches pour Gus"
+description = "Cherche des branches pour Gus"
+giver_npc = ExtResource("1_l0c68")
+receiver_npc = ExtResource("1_l0c68")
+unlock_conditions = Array[ExtResource("6_7m2at")]([SubResource("Resource_1mlhk")])
+required_items = Array[ExtResource("1_egv0r")]([SubResource("Resource_3grqi")])
+reward_items = Array[ExtResource("1_egv0r")]([SubResource("Resource_52d6a")])
+increment_friendship_amount = 1
+metadata/_custom_type_script = "uid://cpp7npivag8su"

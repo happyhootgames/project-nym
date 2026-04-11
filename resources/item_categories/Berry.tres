@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemCategoryData" format=3 uid="uid://cyic4ecgdapb7"]
+
+[ext_resource type="Script" uid="uid://gnsox0710xo5" path="res://resources/data/items/ItemCategoryData.gd" id="1_q307q"]
+
+[resource]
+script = ExtResource("1_q307q")
+id = &"berry"
+display_name = "Berry"
+metadata/_custom_type_script = "uid://gnsox0710xo5"

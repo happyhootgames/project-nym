@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DialogueBranch" format=3 uid="uid://l5glbygdukvv"]
+
+[ext_resource type="Script" uid="uid://ck0fe2j5xtmh3" path="res://resources/data/dialogue/DialogueNode.gd" id="1_atleu"]
+[ext_resource type="Resource" uid="uid://c6mvjmcq6wk2q" path="res://resources/npcs/hank/dialogues/branches/0_first_meeting/nodes/n_hank_first_meeting_1.tres" id="2_xv412"]
+[ext_resource type="Resource" uid="uid://bbf8xdgs33dcf" path="res://resources/npcs/hank/dialogues/branches/0_first_meeting/nodes/n_hank_first_meeting_2.tres" id="3_nbi71"]
+[ext_resource type="Script" uid="uid://858db0qbia1v" path="res://resources/data/dialogue/DialogueBranch.gd" id="4_ammvx"]
+
+[resource]
+script = ExtResource("4_ammvx")
+id = "hank_first_meeting"
+start_node_id = "hank_first_meeting_1"
+nodes = Array[ExtResource("1_atleu")]([ExtResource("2_xv412"), ExtResource("3_nbi71")])
+metadata/_custom_type_script = "uid://858db0qbia1v"

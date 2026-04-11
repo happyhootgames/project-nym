@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="HarvestResource" format=3 uid="uid://dlydl30un6sun"]
+
+[ext_resource type="Script" uid="uid://cx1dnupdphjwv" path="res://resources/data/harvest/HarvestableNode.gd" id="1_2okla"]
+
+[resource]
+script = ExtResource("1_2okla")
+id = &"stone_rock"
+display_name = "Rock"
+metadata/_custom_type_script = "uid://cx1dnupdphjwv"

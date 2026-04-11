@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dj3eqtnj3y6vc"]
+
+[ext_resource type="PackedScene" uid="uid://kfcx3wpiyb1i" path="res://scenes/harvestables/_templates/_Bush.tscn" id="1_0taed"]
+[ext_resource type="Resource" uid="uid://dg61mkq7l48x8" path="res://resources/harvestables/bushes/BlackberryBush.tres" id="2_58wqk"]
+[ext_resource type="Texture2D" uid="uid://c2k1ox3hbpn3i" path="res://assets/Foliage Pack/PNG/Default size/foliagePack_049.png" id="2_m41tf"]
+[ext_resource type="Script" uid="uid://0ynqbtxdaskc" path="res://resources/data/items/ItemData.gd" id="3_m41tf"]
+[ext_resource type="Resource" uid="uid://kaefqcqcb014" path="res://resources/items/berries/BlackberryItem.tres" id="4_peo1y"]
+
+[node name="BlackberryBush" unique_id=1612222142 instance=ExtResource("1_0taed")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=288620171]
+position = Vector2(1, -29)
+texture = ExtResource("2_m41tf")
+
+[node name="HarvestComponent" parent="." index="2" unique_id=1033816738]
+harvestable_node = ExtResource("2_58wqk")
+loot_items = Array[ExtResource("3_m41tf")]([ExtResource("4_peo1y")])
+
+[node name="Label" parent="." index="3" unique_id=1263776410]
+visible = true
+offset_left = -142.0
+offset_top = -135.0
+offset_right = 143.0
+offset_bottom = -59.0
+text = "Blackberry"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DialogueBranch" format=3 uid="uid://t4dwy33o4vth"]
+
+[ext_resource type="Script" uid="uid://ck0fe2j5xtmh3" path="res://resources/data/dialogue/DialogueNode.gd" id="1_b4g5i"]
+[ext_resource type="Resource" uid="uid://ciu24qxfmcixi" path="res://resources/npcs/hank/dialogues/branches/_small_talk/nodes/n_hank_small_talk_1_1.tres" id="2_lgss8"]
+[ext_resource type="Script" uid="uid://858db0qbia1v" path="res://resources/data/dialogue/DialogueBranch.gd" id="3_114d7"]
+
+[resource]
+script = ExtResource("3_114d7")
+id = "hank_small_talk_1"
+start_node_id = "hank_small_talk_1_1"
+nodes = Array[ExtResource("1_b4g5i")]([ExtResource("2_lgss8")])
+metadata/_custom_type_script = "uid://858db0qbia1v"

@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://dgwpc5uh3sr8y"]
+
+[ext_resource type="Script" uid="uid://b7vif0iapd1hu" path="res://ui/scripts/dialogue_ui.gd" id="1_qe7eq"]
+[ext_resource type="Texture2D" uid="uid://cijx5shsw805j" path="res://assets/testing_placeholders/bear_and_breakfast/characters/Anni_icon.webp" id="1_vvl2g"]
+
+[node name="DialogueUI" type="Control" unique_id=589723309 node_paths=PackedStringArray("talking_texture_rect", "talking_name_label", "dialogue_line_label", "choices_container", "next_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qe7eq")
+talking_texture_rect = NodePath("MarginContainer/PanelContainer/MarginContainer/NPCDialogueHBoxContainer/TalkingTextureRect")
+talking_name_label = NodePath("MarginContainer/PanelContainer/MarginContainer/NPCDialogueHBoxContainer/VBoxContainer/TalkingNameLabel")
+dialogue_line_label = NodePath("MarginContainer/PanelContainer/MarginContainer/NPCDialogueHBoxContainer/VBoxContainer/DialogueRichTextLabel")
+choices_container = NodePath("MarginContainer/PanelContainer/MarginContainer/NPCDialogueHBoxContainer/VBoxContainer/ChoicesVBoxContainer")
+next_label = NodePath("MarginContainer/PanelContainer/MarginContainer/NPCDialogueHBoxContainer/VBoxContainer/NextLabel")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1082236417]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=1424611312]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=2003061697]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="NPCDialogueHBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer" unique_id=1715617065]
+layout_mode = 2
+
+[node name="TalkingTextureRect" type="TextureRect" parent="MarginContainer/PanelContainer/MarginContainer/NPCDialogueHBoxContainer" unique_id=1201377537]
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("1_vvl2g")
+expand_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/NPCDialogueHBoxContainer" unique_id=1474265868]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TalkingNameLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/NPCDialogueHBoxContainer/VBoxContainer" unique_id=1727216705]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "Name"
+
+[node name="DialogueRichTextLabel" type="RichTextLabel" parent="MarginContainer/PanelContainer/MarginContainer/NPCDialogueHBoxContainer/VBoxContainer" unique_id=1596728677]
+layout_mode = 2
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 26
+theme_override_font_sizes/bold_font_size = 32
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam rutrum fermentum nibh, id lacinia justo ullamcorper vestibulum. Suspendisse velit tortor, accumsan quis mi quis, suscipit rutrum risus."
+fit_content = true
+
+[node name="ChoicesVBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/NPCDialogueHBoxContainer/VBoxContainer" unique_id=202551593]
+layout_mode = 2
+
+[node name="NextLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/NPCDialogueHBoxContainer/VBoxContainer" unique_id=1657462148]
+layout_mode = 2
+text = "Press Space >"
+horizontal_alignment = 2

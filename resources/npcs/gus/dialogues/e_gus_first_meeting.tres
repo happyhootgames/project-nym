@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DialogueEntry" format=3 uid="uid://d2ai4jsd46ru4"]
+
+[ext_resource type="Resource" uid="uid://cd4oqplfup46i" path="res://resources/npcs/gus/dialogues/0_first_meeting/b_gus_first_meeting.tres" id="1_sp4c6"]
+[ext_resource type="Script" uid="uid://isyg5oja3w7b" path="res://resources/data/dialogue/DialogueCondition.gd" id="2_k65tb"]
+[ext_resource type="Script" uid="uid://54g80cfmn845" path="res://resources/data/dialogue/DialogueEntry.gd" id="3_oknuo"]
+
+[sub_resource type="Resource" id="Resource_bhs2t"]
+script = ExtResource("2_k65tb")
+type = 5
+friendship_value = 1
+metadata/_custom_type_script = "uid://isyg5oja3w7b"
+
+[resource]
+script = ExtResource("3_oknuo")
+id = "gus_first_meeting"
+branch = ExtResource("1_sp4c6")
+conditions = Array[ExtResource("2_k65tb")]([SubResource("Resource_bhs2t")])
+metadata/_custom_type_script = "uid://54g80cfmn845"

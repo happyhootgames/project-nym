@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DialogueNode" format=3 uid="uid://b0ojwdfhfh78d"]
+
+[ext_resource type="Script" uid="uid://cu6upuphii38p" path="res://resources/data/dialogue/DialogueActionData.gd" id="1_2m0ab"]
+[ext_resource type="Resource" uid="uid://ca5rqe22mavr4" path="res://resources/npcs/hank/dialogues/branches/q_poppy_quest/nodes/n_hank_poppy_quest_0_not_started_2.tres" id="2_2m0ab"]
+[ext_resource type="Script" uid="uid://bvqtxerutfcjn" path="res://resources/data/dialogue/DialogueChoice.gd" id="2_qw6e6"]
+[ext_resource type="Script" uid="uid://ck0fe2j5xtmh3" path="res://resources/data/dialogue/DialogueNode.gd" id="4_mkcod"]
+
+[sub_resource type="Resource" id="Resource_8dvww"]
+script = ExtResource("1_2m0ab")
+next_node = ExtResource("2_2m0ab")
+metadata/_custom_type_script = "uid://cu6upuphii38p"
+
+[resource]
+script = ExtResource("4_mkcod")
+id = "hank_poppy_quest_0_not_started_1"
+text = "Hey hey! Dis j'aurais un petit service à te demander..."
+actions = Array[ExtResource("1_2m0ab")]([SubResource("Resource_8dvww")])
+metadata/_custom_type_script = "uid://ck0fe2j5xtmh3"

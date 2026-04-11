@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://d23bh0cb6mbro"]
+
+[ext_resource type="PackedScene" uid="uid://ew8v6b7rxcw3" path="res://scenes/harvestables/_templates/_Tree.tscn" id="1_0puts"]
+[ext_resource type="Texture2D" uid="uid://cvy53opwn3yv" path="res://assets/Foliage Pack/PNG/Default size/foliagePack_015.png" id="2_ltji0"]
+[ext_resource type="Resource" uid="uid://7t7y7elivfd7" path="res://resources/harvestables/trees/OakTree.tres" id="3_bd3wk"]
+[ext_resource type="Script" uid="uid://0ynqbtxdaskc" path="res://resources/data/items/ItemData.gd" id="4_ltji0"]
+[ext_resource type="Resource" uid="uid://dojjpjrvtcrwb" path="res://resources/items/woods/OakWoodItem.tres" id="5_fcpy8"]
+[ext_resource type="Resource" uid="uid://b4012sn540h1v" path="res://resources/items/nuts/AcornItem.tres" id="6_4bj2w"]
+[ext_resource type="Resource" uid="uid://biac8xxqowvd" path="res://resources/items/woods/BranchItem.tres" id="7_1u7sy"]
+
+[node name="OakTree" unique_id=1612222142 instance=ExtResource("1_0puts")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=288620171]
+position = Vector2(0, -106)
+texture = ExtResource("2_ltji0")
+
+[node name="HarvestComponent" parent="." index="3" unique_id=1033816738]
+harvestable_node = ExtResource("3_bd3wk")
+loot_items = Array[ExtResource("4_ltji0")]([ExtResource("5_fcpy8"), ExtResource("6_4bj2w"), ExtResource("7_1u7sy")])

@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="DialogueNode" format=3 uid="uid://c2pa73yqdm525"]
+
+[ext_resource type="Script" uid="uid://cu6upuphii38p" path="res://resources/data/dialogue/DialogueActionData.gd" id="1_67ola"]
+[ext_resource type="Script" uid="uid://bvqtxerutfcjn" path="res://resources/data/dialogue/DialogueChoice.gd" id="2_bbv6f"]
+[ext_resource type="Resource" uid="uid://dxgdtj4rvl3ms" path="res://resources/npcs/gus/dialogues/_small_talk/nodes/n_gus_small_talk_1_2.tres" id="3_hsdfi"]
+[ext_resource type="Script" uid="uid://ck0fe2j5xtmh3" path="res://resources/data/dialogue/DialogueNode.gd" id="4_gfxuy"]
+
+[sub_resource type="Resource" id="Resource_nv5jd"]
+script = ExtResource("1_67ola")
+type = 1
+metadata/_custom_type_script = "uid://cu6upuphii38p"
+
+[sub_resource type="Resource" id="Resource_o86cs"]
+script = ExtResource("1_67ola")
+type = 1
+metadata/_custom_type_script = "uid://cu6upuphii38p"
+
+[sub_resource type="Resource" id="Resource_5n3sg"]
+script = ExtResource("2_bbv6f")
+text = "Moi aussi je suis fatigué"
+actions = Array[ExtResource("1_67ola")]([SubResource("Resource_o86cs")])
+metadata/_custom_type_script = "uid://bvqtxerutfcjn"
+
+[sub_resource type="Resource" id="Resource_7dxrd"]
+script = ExtResource("1_67ola")
+next_node = ExtResource("3_hsdfi")
+metadata/_custom_type_script = "uid://cu6upuphii38p"
+
+[sub_resource type="Resource" id="Resource_4kxtx"]
+script = ExtResource("2_bbv6f")
+text = "Tu fais ça depuis longtemps?"
+actions = Array[ExtResource("1_67ola")]([SubResource("Resource_7dxrd")])
+metadata/_custom_type_script = "uid://bvqtxerutfcjn"
+
+[resource]
+script = ExtResource("4_gfxuy")
+id = "gus_small_talk_1_1"
+text = "Pfff c'est fatiguant"
+has_choices = true
+choices = Array[ExtResource("2_bbv6f")]([SubResource("Resource_5n3sg"), SubResource("Resource_4kxtx")])
+actions = Array[ExtResource("1_67ola")]([SubResource("Resource_nv5jd")])
+metadata/_custom_type_script = "uid://ck0fe2j5xtmh3"

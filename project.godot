@@ -14,7 +14,8 @@ config/name="Project Nym"
 config/version="0.1"
 run/main_scene="uid://b6rfbkjyw7mj8"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/image="uid://bq7a1b6a0ego3"
+config/icon="uid://boykjwnpyxlko"
 
 [autoload]
 

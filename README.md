@@ -1,2 +1,1 @@
-# project-ursa
-
+# project-nym

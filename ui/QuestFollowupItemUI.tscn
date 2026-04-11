@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://lvevofld8crp"]
 
-[ext_resource type="Script" uid="uid://bth0ivtttdhec" path="res://ui/quest_followup_item_ui.gd" id="1_rg1wd"]
+[ext_resource type="Script" uid="uid://bth0ivtttdhec" path="res://ui/scripts/quest_followup_item_ui.gd" id="1_rg1wd"]
 
 [node name="QuestFollowupItemUi" type="Control" unique_id=174514206 node_paths=PackedStringArray("quest_name_label", "quest_status_label")]
 layout_mode = 3

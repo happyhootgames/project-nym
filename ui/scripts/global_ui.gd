@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func handle_state_change() -> void:
 	_hide_all_ui()
-	if PlayerStateManager.is_exploring():
+	if PlayerStateManager.is_exploring() or PlayerStateManager.is_in_menu_wheel():
 		exploring_ui.visible = true
 	elif PlayerStateManager.is_in_dialogue():
 		dialogue_ui.visible = true

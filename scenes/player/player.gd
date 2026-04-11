@@ -152,11 +152,16 @@ func _physics_process(delta: float) -> void:
 	# Store floor state from previous frame
 	was_on_floor = is_on_floor()
 
-	# Only allow gameplay actions while exploring
-	if PlayerStateManager.get_state() != PlayerStateManager.State.EXPLORING:
+	# Action wheel: block controls but keep gravity
+	if PlayerStateManager.is_in_menu_wheel():
+		handle_menu_wheel_physics(delta)
+		return
+
+	# Other non-exploration states: fully stop gameplay movement
+	if not PlayerStateManager.is_exploring():
 		velocity.x = 0.0
-		update_animations()
 		move_and_slide()
+		update_animations()
 		return
 
 	# Read inputs once
@@ -198,6 +203,21 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	update_animations()
 
+func handle_menu_wheel_physics(delta: float) -> void:
+	is_dashing = false
+	is_climbing = false
+	jump_buffer_timer = 0.0
+	coyote_timer = 0.0
+
+	# Smooth stop horizontally
+	velocity.x = move_toward(velocity.x, 0.0, deceleration * delta)
+
+	# Keep gravity active
+	if not was_on_floor:
+		velocity.y += gravity * delta
+
+	move_and_slide()
+	update_animations()
 
 # =========================================================
 # CORE UPDATE

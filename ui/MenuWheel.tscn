@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dqtm7648vqdm0"]
+
+[ext_resource type="Script" uid="uid://qhy8v35b61wg" path="res://ui/scripts/menu_wheel.gd" id="1_tj1c3"]
+
+[node name="MenuWheel" type="Control" unique_id=2093610486 node_paths=PackedStringArray("label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tj1c3")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="." unique_id=739213342]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "..."

@@ -6,6 +6,7 @@ enum State {
 	EXPLORING,
 	DIALOGUE,
 	INVENTORY,
+	MENU_WHEEL,
 	SETTINGS
 }
 
@@ -45,6 +46,9 @@ func is_in_dialogue() -> bool:
 
 func is_in_inventory() -> bool:
 	return _current_state == State.INVENTORY
+
+func is_in_menu_wheel() -> bool:
+	return _current_state == State.MENU_WHEEL
 
 func is_in_settings() -> bool:
 	return _current_state == State.SETTINGS

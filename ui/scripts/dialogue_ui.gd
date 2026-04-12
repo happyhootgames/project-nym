@@ -4,55 +4,50 @@ extends Control
 @export var talking_name_label: Label
 @export var dialogue_line_label: RichTextLabel
 @export var choices_container: VBoxContainer
-@export var next_label: Label
 
 func _ready() -> void:
-	UIEvents.show_dialogue_node.connect(show_dialogue_node)
+	# Receive node data directly from the signal — no DialogueManager reference needed
+	GameEventBus.show_dialogue_node.connect(_on_show_dialogue_node)
 
-func show_dialogue_node() -> void:
-	talking_texture_rect.texture = DialogueManager.current_npc_data.sprite
-	talking_name_label.text = DialogueManager.current_npc_data.show_name
-	dialogue_line_label.text = DialogueManager.current_node.text
-	if DialogueManager.current_node.has_choices:
-		choices_container.visible = true
-		next_label.visible = false
-		generate_choices(DialogueManager.current_node.choices)
-	else:
-		choices_container.visible = false
-		next_label.visible = true
-		
+func _on_show_dialogue_node(node: DialogueNode, npc_data: NPCData) -> void:
+	# Update NPC portrait and name
+	talking_texture_rect.texture = npc_data.sprite
+	talking_name_label.text = tr(npc_data.name_key)
+	
+	# Display translated dialogue text
+	dialogue_line_label.text = tr(node.translation_key)
+	
+	# Always show choices — there is always at least a "Leave" choice
+	_generate_choices(node.choices)
 
-func generate_choices(choices: Array[DialogueChoice]) -> void:
+func _generate_choices(choices: Array[DialogueChoice]) -> void:
 	_clear_choices()
-
-	var first_new_button: Button = null
-
+	
+	var first_button: Button = null
+	
 	for choice in choices:
 		var button := Button.new()
-
-		# Show player response text
-		button.text = choice.text
-
-		# Fill width
+		
+		# Use translated text
+		button.text = tr(choice.translation_key)
 		button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-
-		# Connect click
-		button.pressed.connect(choice_clicked.bind(choice))
-
+		button.pressed.connect(_on_choice_clicked.bind(choice))
+		
 		choices_container.add_child(button)
-
-		# Save first created button
-		if first_new_button == null:
-			first_new_button = button
-
-	# Focus first new button
-	if first_new_button != null:
-		first_new_button.grab_focus()
+		
+		if first_button == null:
+			first_button = button
+	
+	# Focus first button for gamepad/keyboard navigation
+	if first_button != null:
+		first_button.grab_focus()
 
 func _clear_choices() -> void:
+	# Use free() for immediate removal — queue_free() leaves nodes as children
+	# until the next frame, which can cause issues if _generate_choices()
+	# is called in the same frame.
 	for child in choices_container.get_children():
 		child.queue_free()
 
-func choice_clicked(choice: DialogueChoice) -> void:
-	print(choice.text)
+func _on_choice_clicked(choice: DialogueChoice) -> void:
 	DialogueManager.choice_clicked(choice)

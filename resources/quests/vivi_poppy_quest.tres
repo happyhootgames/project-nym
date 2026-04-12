@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="QuestData" format=3 uid="uid://cyfnjjtw5nqsx"]
+
+[ext_resource type="Script" uid="uid://0rqbp4cvakyu" path="res://resources/data/items/ItemStack.gd" id="1_bfheh"]
+[ext_resource type="Resource" uid="uid://cf485q71j6et4" path="res://resources/npcs/vivi/vivi_npc.tres" id="1_vkiu8"]
+[ext_resource type="Script" uid="uid://cpp7npivag8su" path="res://resources/data/quest/QuestData.gd" id="2_t12ke"]
+[ext_resource type="Script" uid="uid://cbq5gjhhdgl5x" path="res://resources/data/quest/QuestCondition.gd" id="3_ee0en"]
+[ext_resource type="Resource" uid="uid://xtjk6s2nj8gi" path="res://resources/items/flowers/poppy_item.tres" id="3_gq6dy"]
+[ext_resource type="Resource" uid="uid://b4oyu3mc8ncdy" path="res://resources/items/gifts/gift_item.tres" id="4_qn1vk"]
+
+[sub_resource type="Resource" id="Resource_uc6oo"]
+script = ExtResource("1_bfheh")
+item_data = ExtResource("3_gq6dy")
+quantity = 3
+metadata/_custom_type_script = "uid://0rqbp4cvakyu"
+
+[sub_resource type="Resource" id="Resource_f30np"]
+script = ExtResource("1_bfheh")
+item_data = ExtResource("4_qn1vk")
+quantity = 1
+metadata/_custom_type_script = "uid://0rqbp4cvakyu"
+
+[sub_resource type="Resource" id="Resource_dq5jp"]
+script = ExtResource("3_ee0en")
+friendship_value = 1
+metadata/_custom_type_script = "uid://cbq5gjhhdgl5x"
+
+[resource]
+script = ExtResource("2_t12ke")
+id = &"vivi_poppy_quest"
+title = "Des coquelicots"
+description = "Des jolis coquelicots"
+giver_npc = ExtResource("1_vkiu8")
+receiver_npc = ExtResource("1_vkiu8")
+unlock_conditions = Array[ExtResource("3_ee0en")]([SubResource("Resource_dq5jp")])
+required_items = Array[ExtResource("1_bfheh")]([SubResource("Resource_uc6oo")])
+reward_items = Array[ExtResource("1_bfheh")]([SubResource("Resource_f30np")])
+metadata/_custom_type_script = "uid://cpp7npivag8su"

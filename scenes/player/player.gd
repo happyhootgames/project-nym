@@ -1,6 +1,16 @@
 class_name Player
 extends CharacterBody2D
 
+
+# =========================================================
+# FUTURE SYSTEMS — hooks ready, managers not yet implemented
+# =========================================================
+# StaminaManager.has_stamina(dash_stamina_cost)     → try_start_dash()
+# StaminaManager.consume(sprint_stamina_per_second)  → apply_horizontal_movement()
+# WeatherManager.weather_changed                     → _on_weather_changed()
+# FoodBuffManager                                    → apply_horizontal_movement()
+
+
 # =========================================================
 # REFERENCES
 # =========================================================
@@ -11,7 +21,7 @@ extends CharacterBody2D
 
 # =========================================================
 # UNLOCKS
-# Enable or disable abilities during the game.
+# Toggled by major spirits as the story progresses.
 # =========================================================
 
 @export var can_sprint: bool = false
@@ -21,8 +31,7 @@ extends CharacterBody2D
 
 
 # =========================================================
-# MOVE
-# Horizontal movement speeds.
+# MOVEMENT — SPEEDS
 # =========================================================
 
 @export var move_speed: float = 400.0
@@ -30,7 +39,7 @@ extends CharacterBody2D
 
 
 # =========================================================
-# MOVE FEEL
+# MOVEMENT — FEEL
 # Ground and air responsiveness.
 # =========================================================
 
@@ -58,7 +67,7 @@ extends CharacterBody2D
 @export var jump_cut_multiplier: float = 0.45
 @export var extra_jumps: int = 1
 
-# Jump assist
+# Assist — forgiveness windows for jump input.
 @export var coyote_time: float = 0.12
 @export var jump_buffer_time: float = 0.12
 
@@ -88,13 +97,21 @@ extends CharacterBody2D
 # =========================================================
 
 @export var climb_speed: float = 240.0
-@export var climb_sprint_speed: float = 220.0
+@export var climb_sprint_speed: float = 400.0
 @export var climb_detach_time: float = 0.15
 
 
 # =========================================================
-# RUNTIME - MOVEMENT
-# Values updated during gameplay.
+# RUNTIME — WEATHER
+# Multiplier applied to movement speed. Set by WeatherManager.
+# =========================================================
+
+var movement_speed_multiplier: float = 1.0
+
+
+# =========================================================
+# RUNTIME — MOVEMENT
+# Values updated each physics frame.
 # =========================================================
 
 var coyote_timer: float = 0.0
@@ -108,7 +125,7 @@ var is_dashing: bool = false
 var dash_timer: float = 0.0
 var dash_direction: float = 1.0
 
-# One timer per used dash charge
+# One entry per consumed dash charge — each tracks its own recharge countdown.
 var dash_recharge_timers: Array[float] = []
 
 var can_climb: bool = false
@@ -116,17 +133,17 @@ var is_climbing: bool = false
 var climb_contacts: int = 0
 var climb_detach_timer: float = 0.0
 
-# Floor state from previous physics step
+# Cached from the previous physics step — read before move_and_slide().
 var was_on_floor: bool = false
 
 
 # =========================================================
-# RUNTIME - INTERACTION
+# RUNTIME — INTERACTION
 # =========================================================
 
-var all_nearby_interactables: Array[Node2D] = []
-var closest_interactable: Node2D = null
-var previous_closest_interactable: Node2D = null
+var all_nearby_interactables: Array[Interactable] = []
+var closest_interactable: Interactable = null
+var previous_closest_interactable: Interactable = null
 
 
 # =========================================================
@@ -134,112 +151,71 @@ var previous_closest_interactable: Node2D = null
 # =========================================================
 
 func _ready() -> void:
-	# Connect game systems
 	InputRouterManager.player_interact.connect(interact)
 	SaveManager.data_loaded.connect(load_data)
 	SaveManager.register_player(self)
+	# WeatherManager.weather_changed.connect(_on_weather_changed)
 
-	# Init movement resources
 	remaining_jumps = extra_jumps
 	remaining_dashes = max_dashes
 	dash_recharge_timers.clear()
 
-	# Load saved player position
-	load_data()
 
+# =========================================================
+# PHYSICS LOOP
+# =========================================================
 
 func _physics_process(delta: float) -> void:
-	# Store floor state from previous frame
+	# Cache floor state before move_and_slide() runs.
 	was_on_floor = is_on_floor()
 
-	# Action wheel: block controls but keep gravity
-	if PlayerStateManager.is_in_menu_wheel():
-		handle_menu_wheel_physics(delta)
-		return
-
-	# Other non-exploration states: fully stop gameplay movement
+	# Any non-exploration state — freeze horizontal movement entirely.
 	if not PlayerStateManager.is_exploring():
 		velocity.x = 0.0
 		move_and_slide()
 		update_animations()
 		return
 
-	# Read inputs once
+	# Read inputs once per frame.
 	var input_dir := Input.get_axis("move_left", "move_right")
 	var vertical_input := Input.get_axis("move_up", "move_down")
 	var is_sprinting := can_sprint and Input.is_action_pressed("sprint") and input_dir != 0
 
-	# Update timers
 	update_timers(delta)
-
-	# Try entering climb mode
 	try_start_climb(vertical_input)
 
-	# Handle climb first
 	if is_climbing:
 		handle_climb()
 		move_and_slide()
 		update_animations()
-
 		if is_climbing:
 			return
 
-	# Try starting dash
 	try_start_dash(input_dir)
 
-	# Handle dash state
 	if is_dashing:
 		update_dash(delta)
 		move_and_slide()
 		update_animations()
 		return
 
-	# Handle normal movement
 	apply_gravity(delta)
 	apply_horizontal_movement(delta, input_dir, is_sprinting)
 	handle_jump()
 	handle_jump_cut()
-
-	move_and_slide()
-	update_animations()
-
-func handle_menu_wheel_physics(delta: float) -> void:
-	is_dashing = false
-	is_climbing = false
-	jump_buffer_timer = 0.0
-	coyote_timer = 0.0
-
-	# Smooth stop horizontally
-	velocity.x = move_toward(velocity.x, 0.0, deceleration * delta)
-
-	# Keep gravity active
-	if not was_on_floor:
-		velocity.y += gravity * delta
-
 	move_and_slide()
 	update_animations()
 
 # =========================================================
-# CORE UPDATE
+# TIMERS
 # =========================================================
 
 func update_timers(delta: float) -> void:
-	# Detach timer used after leaving climb
 	climb_detach_timer = max(climb_detach_timer - delta, 0.0)
-
-	# Jump input memory
 	update_jump_buffer(delta)
-
-	# Floor state and coyote time
 	update_floor_state(delta)
-
-	# One-way platform timer
 	update_drop_through(delta)
-
-	# Dash recharge timers
 	update_dash_recharge(delta)
-
-	# Down + jump to drop through
 	try_start_drop_through()
 
 
@@ -247,16 +223,16 @@ func update_timers(delta: float) -> void:
 # INPUT MEMORY
 # =========================================================
 
+# Stores jump input for a short window to allow early presses.
 func update_jump_buffer(delta: float) -> void:
-	# Store jump input for a short time
 	if Input.is_action_just_pressed("jump"):
 		jump_buffer_timer = jump_buffer_time
 	else:
 		jump_buffer_timer = max(jump_buffer_timer - delta, 0.0)
 
 
+# Resets jumps and coyote timer when landing. Counts down coyote time in the air.
 func update_floor_state(delta: float) -> void:
-	# Use previous floor state before current move_and_slide()
 	if was_on_floor:
 		coyote_timer = coyote_time
 		remaining_jumps = extra_jumps
@@ -268,48 +244,44 @@ func update_floor_state(delta: float) -> void:
 # DROP-THROUGH
 # =========================================================
 
+# Initiates a drop-through when the player presses down + jump on a one-way platform.
 func try_start_drop_through() -> void:
 	var vertical_input := Input.get_axis("move_up", "move_down")
 
-	# Require a strong downward input
 	if vertical_input > drop_through_input_threshold \
 	and Input.is_action_just_pressed("jump") \
 	and was_on_floor:
 		drop_through_timer = drop_through_time
-
-		# Ignore one-way platforms for a short time
 		set_collision_mask_value(one_way_platform_mask_bit, false)
-
-		# Push player slightly downward
 		velocity.y = 100.0
-
-		# Cancel jump on this frame
 		jump_buffer_timer = 0.0
 		coyote_timer = 0.0
 
 
+# Restores one-way platform collision once the drop-through window expires.
 func update_drop_through(delta: float) -> void:
-	if drop_through_timer > 0.0:
-		drop_through_timer = max(drop_through_timer - delta, 0.0)
+	if drop_through_timer <= 0.0:
+		return
 
-		# Restore collisions when done
-		if drop_through_timer <= 0.0:
-			set_collision_mask_value(one_way_platform_mask_bit, true)
+	drop_through_timer = max(drop_through_timer - delta, 0.0)
+
+	if drop_through_timer <= 0.0:
+		set_collision_mask_value(one_way_platform_mask_bit, true)
 
 
 # =========================================================
 # DASH
 # =========================================================
 
+# Ticks down each recharge timer and restores a dash charge when one completes.
 func update_dash_recharge(delta: float) -> void:
 	if not can_dash:
 		return
 
-	# Update all active recharge timers
+	# Iterate in reverse so removing an element doesn't skip the next.
 	for i in range(dash_recharge_timers.size() - 1, -1, -1):
 		dash_recharge_timers[i] -= delta
 
-		# Restore one dash when timer ends
 		if dash_recharge_timers[i] <= 0.0:
 			dash_recharge_timers.remove_at(i)
 			remaining_dashes = min(remaining_dashes + 1, max_dashes)
@@ -319,21 +291,19 @@ func try_start_dash(input_dir: float) -> void:
 	if not can_dash or is_climbing:
 		return
 
+	# Future: if not StaminaManager.has_stamina(dash_stamina_cost): return
+
 	if Input.is_action_just_pressed("dash") and remaining_dashes > 0 and not is_dashing:
 		is_dashing = true
 		dash_timer = dash_duration
 		remaining_dashes -= 1
-
-		# Start recharge for the used dash
 		dash_recharge_timers.append(dash_recharge_time)
 
-		# Use current direction if available
 		if input_dir != 0:
 			dash_direction = input_dir
 
 
 func update_dash(delta: float) -> void:
-	# Ignore normal movement during dash
 	dash_timer -= delta
 	velocity.x = dash_direction * dash_speed
 	velocity.y = 0.0
@@ -347,7 +317,6 @@ func update_dash(delta: float) -> void:
 # =========================================================
 
 func try_start_climb(vertical_input: float) -> void:
-	# Start climbing only in valid conditions
 	if can_climb and vertical_input != 0 and climb_detach_timer <= 0.0 and not was_on_floor:
 		is_climbing = true
 
@@ -355,20 +324,19 @@ func try_start_climb(vertical_input: float) -> void:
 func handle_climb() -> void:
 	var horizontal_input := Input.get_axis("move_left", "move_right")
 	var vertical_input := Input.get_axis("move_up", "move_down")
-	var is_sprinting := can_sprint and Input.is_action_pressed("sprint") and (horizontal_input != 0 or vertical_input != 0)
+	var is_sprinting := can_sprint \
+		and Input.is_action_pressed("sprint") \
+		and (horizontal_input != 0 or vertical_input != 0)
 
-	# Auto leave climb if player is no longer inside a climbable zone
 	if not can_climb:
 		stop_climbing()
 		return
 
-	# Jump leaves climb
 	if Input.is_action_just_pressed("jump"):
 		stop_climbing()
 		velocity.y = jump_force
 		return
 
-	# Move in climb state
 	var current_climb_speed := climb_sprint_speed if is_sprinting else climb_speed
 	velocity.x = horizontal_input * current_climb_speed
 	velocity.y = vertical_input * current_climb_speed
@@ -384,29 +352,34 @@ func stop_climbing() -> void:
 # =========================================================
 
 func apply_gravity(delta: float) -> void:
-	if not was_on_floor:
-		var current_gravity := gravity
+	if was_on_floor:
+		return
 
-		if can_glide and is_gliding():
-			current_gravity *= glide_gravity_multiplier
-		elif velocity.y > 0.0:
-			current_gravity *= fall_gravity_multiplier
+	var current_gravity := gravity
 
-		velocity.y += current_gravity * delta
+	if can_glide and is_gliding():
+		current_gravity *= glide_gravity_multiplier
+	elif velocity.y > 0.0:
+		current_gravity *= fall_gravity_multiplier
 
-		# Limit fall speed while gliding
-		if can_glide and is_gliding():
-			velocity.y = min(velocity.y, max_glide_fall_speed)
+	velocity.y += current_gravity * delta
+
+	# Cap fall speed while gliding.
+	if can_glide and is_gliding():
+		velocity.y = min(velocity.y, max_glide_fall_speed)
 
 
 func apply_horizontal_movement(delta: float, input_dir: float, is_sprinting: bool) -> void:
 	var current_speed := sprint_speed if is_sprinting else move_speed
-	var target_velocity_x := input_dir * current_speed
+	# Future: multiply by FoodBuffManager speed modifier here too.
+	current_speed *= movement_speed_multiplier
 
+	# Future: if is_sprinting: StaminaManager.consume(sprint_stamina_per_second * delta)
+
+	var target_velocity_x := input_dir * current_speed
 	var current_acceleration := acceleration if was_on_floor else air_acceleration
 	var current_deceleration := deceleration if was_on_floor else air_deceleration
 
-	# Smooth move toward target speed
 	if input_dir != 0:
 		velocity.x = move_toward(velocity.x, target_velocity_x, current_acceleration * delta)
 	else:
@@ -414,30 +387,31 @@ func apply_horizontal_movement(delta: float, input_dir: float, is_sprinting: boo
 
 
 func handle_jump() -> void:
-	# Ignore jump while dropping through
+	# Skip jump input during drop-through to avoid an accidental ground jump.
 	if drop_through_timer > 0.0:
 		return
 
-	# Ground jump with coyote time
+	# Ground jump — coyote time extends the window slightly after leaving a ledge.
 	if jump_buffer_timer > 0.0 and coyote_timer > 0.0:
 		velocity.y = jump_force
 		jump_buffer_timer = 0.0
 		coyote_timer = 0.0
 		return
 
-	# Extra air jump
+	# Extra air jump (double jump).
 	if jump_buffer_timer > 0.0 and not was_on_floor and remaining_jumps > 0 and can_double_jump:
 		velocity.y = jump_force
 		remaining_jumps -= 1
 		jump_buffer_timer = 0.0
 
 
+# Cuts upward velocity when jump is released early — enables variable jump height.
 func handle_jump_cut() -> void:
-	# Release jump early for short hop
 	if Input.is_action_just_released("jump") and velocity.y < 0.0:
 		velocity.y *= jump_cut_multiplier
 
 
+# Returns true when the player is actively gliding (holding jump while falling).
 func is_gliding() -> bool:
 	if not can_glide:
 		return false
@@ -459,7 +433,6 @@ func update_animations() -> void:
 
 	var new_animation := "idle"
 
-	# Animation priority
 	if is_dashing:
 		new_animation = "dash"
 	elif is_climbing:
@@ -474,18 +447,17 @@ func update_animations() -> void:
 	elif abs(velocity.x) > 10.0:
 		new_animation = "walk"
 
-	# Change only when needed
+	# Only call play() when the animation actually changes.
 	if animated_sprite.animation != new_animation:
 		animated_sprite.play(new_animation)
 
-	# Pause climb animation when not moving
+	# Pause climb animation when stationary on a ladder.
 	if is_climbing:
 		if abs(velocity.y) > 5.0:
 			animated_sprite.play()
 		else:
 			animated_sprite.pause()
 
-	# Flip sprite with horizontal movement
 	if velocity.x < 0.0:
 		animated_sprite.flip_h = true
 	elif velocity.x > 0.0:
@@ -496,40 +468,28 @@ func update_animations() -> void:
 # INTERACTION
 # =========================================================
 
+# Triggers the closest interactable when the player presses interact.
 func interact() -> void:
-	if PlayerStateManager.get_state() != PlayerStateManager.State.EXPLORING:
+	if not PlayerStateManager.is_exploring():
 		return
-
 	if closest_interactable == null:
 		return
-	
 	closest_interactable.interact()
-	
-	#var interaction_component := _find_interaction_component(closest_interactable)
-	#if interaction_component != null:
-		#interaction_component.interact()
 
 
-#func _find_interaction_component(body: Node2D) -> InteractionComponent:
-	#for child in body.get_children():
-		#if child is InteractionComponent:
-			#return child
-	#return null
-
-
+# Finds the nearest Interactable in range and updates the prompt accordingly.
 func _find_closest_interactable() -> void:
 	if all_nearby_interactables.is_empty():
-		UIEvents.hide_input_helper.emit()
+		GameEventBus.hide_input_helper.emit()
 		previous_closest_interactable = closest_interactable
 		closest_interactable = null
 		return
 
-	var best: Node2D = null
+	var best: Interactable = null
 	var best_dist: float = INF
 
 	for interactable in all_nearby_interactables:
 		var dist := global_position.distance_squared_to(interactable.global_position)
-
 		if dist < best_dist:
 			best_dist = dist
 			best = interactable
@@ -538,25 +498,22 @@ func _find_closest_interactable() -> void:
 	closest_interactable = best
 
 	if closest_interactable != null:
-		UIEvents.show_input_helper.emit(
-			"Press",
-			InputBindingsManager.get_action_keyboard_label("interact")
-		)
+		# UI resolves the label from the action name — player stays decoupled.
+		GameEventBus.show_input_helper.emit("interact")
 
 
 # =========================================================
 # INTERACTION DETECTION
 # =========================================================
 
-func _on_interactable_detection_area_2d_body_entered(body: Node2D) -> void:
-	if not body.has_method("interact"):
-		return
-	all_nearby_interactables.append(body)
-	_find_closest_interactable()
+func _on_interactable_detection_area_2d_area_entered(area: Area2D) -> void:
+	if area is Interactable:
+		all_nearby_interactables.append(area as Interactable)
+		_find_closest_interactable()
 
 
-func _on_interactable_detection_area_2d_body_exited(body: Node2D) -> void:
-	all_nearby_interactables.erase(body)
+func _on_interactable_detection_area_2d_area_exited(area: Area2D) -> void:
+	all_nearby_interactables.erase(area)
 	_find_closest_interactable()
 
 
@@ -564,19 +521,28 @@ func _on_interactable_detection_area_2d_body_exited(body: Node2D) -> void:
 # CLIMB DETECTION
 # =========================================================
 
-func _on_climb_detector_area_2d_body_entered(body: Node2D) -> void:
+func _on_climb_detector_area_2d_body_entered(_body: Node2D) -> void:
 	climb_contacts += 1
 	can_climb = climb_contacts > 0
 
 
-func _on_climb_detector_area_2d_body_exited(body: Node2D) -> void:
+func _on_climb_detector_area_2d_body_exited(_body: Node2D) -> void:
 	climb_contacts = max(climb_contacts - 1, 0)
 	can_climb = climb_contacts > 0
 
-	# Auto leave climb when no climbable zone remains
 	if not can_climb and is_climbing:
 		stop_climbing()
 		velocity.y = 0.0
+
+
+# =========================================================
+# WEATHER
+# =========================================================
+
+# Called by WeatherManager when weather changes.
+# Adjusts movement speed multiplier based on hostile conditions.
+#func _on_weather_changed(new_weather: StringName) -> void:
+#	movement_speed_multiplier = WeatherManager.get_speed_multiplier(new_weather)
 
 
 # =========================================================
@@ -586,22 +552,31 @@ func _on_climb_detector_area_2d_body_exited(body: Node2D) -> void:
 func save_data() -> Dictionary:
 	return {
 		"position_x": global_position.x,
-		"position_y": global_position.y
+		"position_y": global_position.y,
 	}
 
 
 func load_data() -> void:
-	if not SaveManager.data.has("player"):
-		return
+	var player_data: Dictionary = SaveManager.data.get("player", {})
 
-	var player_data: Dictionary = SaveManager.data["player"]
+	var x = player_data.get("position_x", 0.0)
+	var y = player_data.get("position_y", 0.0)
 
-	if player_data.has("position_x") and player_data.has("position_y"):
-		var x = player_data["position_x"]
-		var y = player_data["position_y"]
+	if not (x == 0.0 and y == 0.0):
+		global_position = Vector2(x, y)
 
-		if not (x == 0 and y == 0):
-			global_position = Vector2(x, y)
+	_debug()
 
-	print("============================================")
-	print("PLAYER POSITION: ", global_position)
+
+# =========================================================
+# DEBUG
+# =========================================================
+
+func _debug() -> void:
+	print_debug("🧍 Player | pos: %s | state: %s | dashes: %d/%d | jumps: %d" % [
+		global_position,
+		PlayerStateManager.get_state_as_string(),
+		remaining_dashes,
+		max_dashes,
+		remaining_jumps,
+	])

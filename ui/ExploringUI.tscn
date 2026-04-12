@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bl73kifschryu" path="res://ui/scripts/exploring_ui.gd" id="1_b7r5o"]
 [ext_resource type="PackedScene" uid="uid://cspotdl5bni25" path="res://ui/QuestFollowupUI.tscn" id="2_6rvgi"]
-[ext_resource type="PackedScene" uid="uid://dqtm7648vqdm0" path="res://ui/MenuWheel.tscn" id="3_fsram"]
 
 [node name="ExploringUI" type="Control" unique_id=1150668020 node_paths=PackedStringArray("helper_label")]
 layout_mode = 3
@@ -27,9 +26,6 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="QuestFollowupUi" parent="VBoxContainer/HBoxContainer" unique_id=1063076716 instance=ExtResource("2_6rvgi")]
-layout_mode = 2
-
-[node name="MenuWheel" parent="VBoxContainer" unique_id=2093610486 instance=ExtResource("3_fsram")]
 layout_mode = 2
 
 [node name="PromptLabel" type="Label" parent="VBoxContainer" unique_id=47945851]

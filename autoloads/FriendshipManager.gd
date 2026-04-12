@@ -1,37 +1,60 @@
 extends Node
 
+
+# =========================================================
+# SIGNALS
+# =========================================================
+
 signal friendship_updated
 
+
+# =========================================================
+# STATE
+# =========================================================
+
 var friendships: Dictionary = {}
+
+
+# =========================================================
+# LIFECYCLE
+# =========================================================
 
 func _ready() -> void:
 	SaveManager.data_loaded.connect(load_data)
 
-func get_friendship_level(npc_data: NPCData) -> int:
-	if friendships.has(npc_data.npc_id):
-		var level :int = friendships[npc_data.npc_id]
-		if level == null:
-			return 0
-		else:
-			return level
-	else:
-		friendships[npc_data.npc_id] = 0
-		return 0
 
+# =========================================================
+# PUBLIC API
+# =========================================================
+
+# Returns the current friendship level for a given NPC. Defaults to 0.
+func get_friendship_level(npc_data: NPCData) -> int:
+	return friendships.get(npc_data.id, 0)
+
+
+# Adds quantity points to the friendship level of the given NPC.
 func increment_friendship_for(npc_data: NPCData, quantity: int) -> void:
-	if not friendships.has(npc_data.npc_id):
-		friendships[npc_data.npc_id] = 0
-	friendships[npc_data.npc_id] = friendships[npc_data.npc_id]+quantity
+	friendships[npc_data.id] = get_friendship_level(npc_data) + quantity
 	friendship_updated.emit()
 	_debug()
+
+
+# =========================================================
+# SAVE / LOAD
+# =========================================================
 
 func save_data() -> Dictionary:
 	return friendships
 
+
 func load_data() -> void:
-	friendships = SaveManager.data["friendships"]
-	print("============================================")
+	friendships = SaveManager.data.get("friendships", {})
 	_debug()
 
+
+# =========================================================
+# DEBUG
+# =========================================================
+
 func _debug() -> void:
-	print("💕 FRIENDSHIP\n",JSON.stringify(friendships, '\t'))
+	print_debug("💕 FriendshipManager | ", friendships)

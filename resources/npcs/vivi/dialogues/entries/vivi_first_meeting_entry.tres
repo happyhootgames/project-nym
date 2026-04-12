@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DialogueEntry" format=3 uid="uid://dfpefa7qvqvon"]
+
+[ext_resource type="Script" uid="uid://isyg5oja3w7b" path="res://resources/data/dialogue/DialogueCondition.gd" id="1_8543t"]
+[ext_resource type="Resource" uid="uid://yg308ev8rtfr" path="res://resources/npcs/vivi/dialogues/branches/first_meeting/vivi_first_meeting_branch.tres" id="1_xpbyd"]
+[ext_resource type="Script" uid="uid://54g80cfmn845" path="res://resources/data/dialogue/DialogueEntry.gd" id="2_xpbyd"]
+
+[sub_resource type="Resource" id="Resource_8543t"]
+script = ExtResource("1_8543t")
+type = 5
+friendship_value = 1
+metadata/_custom_type_script = "uid://isyg5oja3w7b"
+
+[resource]
+script = ExtResource("2_xpbyd")
+id = &"first_meeting"
+branch = ExtResource("1_xpbyd")
+conditions = Array[ExtResource("1_8543t")]([SubResource("Resource_8543t")])
+metadata/_custom_type_script = "uid://54g80cfmn845"

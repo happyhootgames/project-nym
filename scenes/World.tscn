@@ -22,17 +22,12 @@
 [ext_resource type="Texture2D" uid="uid://ccvoim5u2mgub" path="res://assets/Platformer/Platformer Assets Base/PNG/Tiles/grassHillRight2.png" id="14_lawxi"]
 [ext_resource type="Texture2D" uid="uid://djxel6sorq38g" path="res://assets/Platformer/Platformer Assets Base/PNG/Tiles/grassHillRight.png" id="15_uni40"]
 [ext_resource type="PackedScene" uid="uid://665vegcop2j2" path="res://scenes/player/Player.tscn" id="17_nthub"]
-[ext_resource type="PackedScene" uid="uid://bhh4fffjlyk5q" path="res://scenes/House.tscn" id="17_rpuxp"]
-[ext_resource type="PackedScene" uid="uid://b10jl7s7budnr" path="res://scenes/npcs/GusNPC.tscn" id="18_44lqw"]
-[ext_resource type="PackedScene" uid="uid://3e1lh1k4ktle" path="res://scenes/npcs/HankNPC.tscn" id="19_dwmkc"]
-[ext_resource type="PackedScene" uid="uid://d4by48d2y8df" path="res://scenes/harvestables/trees/PineTree.tscn" id="21_dgldv"]
-[ext_resource type="PackedScene" uid="uid://d23bh0cb6mbro" path="res://scenes/harvestables/trees/OakTree.tscn" id="22_dgldv"]
-[ext_resource type="PackedScene" uid="uid://dj3eqtnj3y6vc" path="res://scenes/harvestables/bushes/BlackberryBush.tscn" id="28_n2fr6"]
-[ext_resource type="PackedScene" uid="uid://c7wj3o7hue87y" path="res://scenes/harvestables/flowers/PoppyFlower.tscn" id="31_128ka"]
-[ext_resource type="PackedScene" uid="uid://77ux3o4id0ls" path="res://scenes/harvestables/deposits/GoldDeposit.tscn" id="31_ngql4"]
-[ext_resource type="PackedScene" uid="uid://c0j2qlvok7oog" path="res://scenes/harvestables/deposits/StoneDeposit.tscn" id="32_b64vv"]
-[ext_resource type="PackedScene" uid="uid://dmqilacsj0lf6" path="res://scenes/harvestables/flowers/LilacFlower.tscn" id="32_ngql4"]
-[ext_resource type="PackedScene" uid="uid://b0vjp6wuanxvc" path="res://scenes/harvestables/bushes/BlueberryBush.tscn" id="33_b64vv"]
+[ext_resource type="PackedScene" uid="uid://bhh4fffjlyk5q" path="res://scenes/houses/House.tscn" id="17_rpuxp"]
+[ext_resource type="PackedScene" uid="uid://cg3atecdtw5vi" path="res://scenes/harvest_points/trees/PineTree.tscn" id="21_dgldv"]
+[ext_resource type="PackedScene" uid="uid://cr416ldkfql6m" path="res://scenes/harvest_points/bushes/BlackberryBush.tscn" id="28_n2fr6"]
+[ext_resource type="PackedScene" uid="uid://d0qfknyu5sr6r" path="res://scenes/npcs/ViviNPC.tscn" id="28_uni40"]
+[ext_resource type="PackedScene" uid="uid://c0vy8c6vlai5j" path="res://scenes/harvest_points/flowers/PoppyFlower.tscn" id="31_128ka"]
+[ext_resource type="PackedScene" uid="uid://cjjd4g8rtskhw" path="res://scenes/harvest_points/deposits/StoneDeposit.tscn" id="32_b64vv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c0d7e"]
 texture = ExtResource("2_c0d7e")
@@ -324,13 +319,20 @@ tile_set = SubResource("TileSet_cgwb4")
 position = Vector2(1111, 493)
 scale = Vector2(0.35, 0.35)
 
-[node name="GusNPC" parent="." unique_id=340429217 instance=ExtResource("18_44lqw")]
-position = Vector2(-163, -380)
-scale = Vector2(0.5, 0.5)
+[node name="BlackberryBush" parent="." unique_id=1612222142 instance=ExtResource("28_n2fr6")]
+position = Vector2(-224, 210)
 
-[node name="HankNPC" parent="." unique_id=590972163 instance=ExtResource("19_dwmkc")]
-position = Vector2(1517, 455)
-scale = Vector2(0.5, 0.5)
+[node name="PoppyFlower" parent="." unique_id=1518498633 instance=ExtResource("31_128ka")]
+position = Vector2(-102, 70)
+
+[node name="_HarvestPointBase" parent="." unique_id=2080374974 instance=ExtResource("21_dgldv")]
+position = Vector2(58, 281)
+
+[node name="StoneDeposit" parent="." unique_id=685832565 instance=ExtResource("32_b64vv")]
+position = Vector2(493, 489)
+
+[node name="ViviNPC" parent="." unique_id=340429217 instance=ExtResource("28_uni40")]
+position = Vector2(914, 241)
 
 [node name="Player" parent="." unique_id=1800804725 instance=ExtResource("17_nthub")]
 position = Vector2(584, 257)
@@ -352,33 +354,3 @@ texture = ExtResource("5_2pad8")
 position = Vector2(2553, 594.00006)
 scale = Vector2(2, 2)
 texture = ExtResource("5_2pad8")
-
-[node name="NewPoppyFlower" parent="." unique_id=1612222142 instance=ExtResource("31_128ka")]
-position = Vector2(-233, 71)
-
-[node name="NewPoppyFlower2" parent="." unique_id=1651846604 instance=ExtResource("31_128ka")]
-position = Vector2(521, 281)
-
-[node name="LilacFlower" parent="." unique_id=1861479168 instance=ExtResource("32_ngql4")]
-position = Vector2(865, 489)
-
-[node name="LilacFlower2" parent="." unique_id=580404460 instance=ExtResource("32_ngql4")]
-position = Vector2(-600, -351)
-
-[node name="GoldDeposit" parent="." unique_id=2123292609 instance=ExtResource("31_ngql4")]
-position = Vector2(-308, 493)
-
-[node name="StoneDeposit" parent="." unique_id=542136965 instance=ExtResource("32_b64vv")]
-position = Vector2(-35, 493)
-
-[node name="OakTree" parent="." unique_id=1562949000 instance=ExtResource("22_dgldv")]
-position = Vector2(130, 281)
-
-[node name="PineTree" parent="." unique_id=32054116 instance=ExtResource("21_dgldv")]
-position = Vector2(-525, -349)
-
-[node name="BlackberryBush" parent="." unique_id=516051939 instance=ExtResource("28_n2fr6")]
-position = Vector2(-128, 212)
-
-[node name="BlueberryBush" parent="." unique_id=479762712 instance=ExtResource("33_b64vv")]
-position = Vector2(481, 491)

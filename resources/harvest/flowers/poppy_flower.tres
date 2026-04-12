@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="HarvestePointData" format=3 uid="uid://chqnfirsc8e38"]
+
+[ext_resource type="Script" uid="uid://0rqbp4cvakyu" path="res://resources/data/items/ItemStack.gd" id="1_iot2j"]
+[ext_resource type="Resource" uid="uid://xtjk6s2nj8gi" path="res://resources/items/flowers/poppy_item.tres" id="2_41pla"]
+[ext_resource type="Script" uid="uid://cx1dnupdphjwv" path="res://resources/data/harvest/HarvestPointData.gd" id="3_suhvc"]
+
+[sub_resource type="Resource" id="Resource_xxk80"]
+script = ExtResource("1_iot2j")
+item_data = ExtResource("2_41pla")
+quantity = 1
+metadata/_custom_type_script = "uid://0rqbp4cvakyu"
+
+[resource]
+script = ExtResource("3_suhvc")
+id = &"poppy_flower"
+display_name = "Poppy Flower"
+type = 2
+loot_items = Array[ExtResource("1_iot2j")]([SubResource("Resource_xxk80")])
+metadata/_custom_type_script = "uid://cx1dnupdphjwv"

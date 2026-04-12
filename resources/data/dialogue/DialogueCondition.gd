@@ -11,5 +11,5 @@ enum ConditionType {
 }
 
 @export var type: ConditionType
-@export var quest_id: String = ""
+@export var quest_id: StringName = &""
 @export var friendship_value: int = 0

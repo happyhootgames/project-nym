@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c0vy8c6vlai5j"]
+
+[ext_resource type="PackedScene" uid="uid://dx3wmmaohgix1" path="res://scenes/_base/_HarvestPointBase.tscn" id="1_d2cia"]
+[ext_resource type="Texture2D" uid="uid://dk02udp5e5crm" path="res://assets/Foliage Pack/PNG/Default size/foliagePack_062.png" id="2_flhdc"]
+[ext_resource type="Resource" uid="uid://chqnfirsc8e38" path="res://resources/harvest/flowers/poppy_flower.tres" id="3_2sm67"]
+
+[node name="PoppyFlower" unique_id=1612222142 instance=ExtResource("1_d2cia")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=288620171]
+position = Vector2(0, -25)
+texture = ExtResource("2_flhdc")
+
+[node name="HarvestInteractable" parent="." index="2" unique_id=809379557]
+harvest_point_data = ExtResource("3_2sm67")

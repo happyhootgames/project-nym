@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="DialogueBranch" format=3 uid="uid://chjmtf3h4rg1t"]
+
+[ext_resource type="Script" uid="uid://ck0fe2j5xtmh3" path="res://resources/data/dialogue/DialogueNode.gd" id="1_5kaya"]
+[ext_resource type="Script" uid="uid://858db0qbia1v" path="res://resources/data/dialogue/DialogueBranch.gd" id="2_0m8nt"]
+[ext_resource type="Script" uid="uid://bvqtxerutfcjn" path="res://resources/data/dialogue/DialogueChoice.gd" id="2_gw34i"]
+[ext_resource type="Script" uid="uid://cu6upuphii38p" path="res://resources/data/dialogue/DialogueActionData.gd" id="3_d74tw"]
+[ext_resource type="Script" uid="uid://0rqbp4cvakyu" path="res://resources/data/items/ItemStack.gd" id="4_c5bxk"]
+
+[sub_resource type="Resource" id="Resource_ey75w"]
+script = ExtResource("3_d74tw")
+type = 1
+metadata/_custom_type_script = "uid://cu6upuphii38p"
+
+[sub_resource type="Resource" id="Resource_4hufa"]
+script = ExtResource("2_gw34i")
+translation_key = &"DIALOGUE_CHOICE_SAY_NO"
+actions = Array[ExtResource("3_d74tw")]([SubResource("Resource_ey75w")])
+metadata/_custom_type_script = "uid://bvqtxerutfcjn"
+
+[sub_resource type="Resource" id="Resource_gg6t2"]
+script = ExtResource("1_5kaya")
+id = &"start"
+translation_key = &"DIALOGUE_VIVI_POPPY_QUEST_CHECK_1"
+choices = Array[ExtResource("2_gw34i")]([SubResource("Resource_4hufa")])
+metadata/_custom_type_script = "uid://ck0fe2j5xtmh3"
+
+[resource]
+script = ExtResource("2_0m8nt")
+id = &"quest_active"
+start_node_id = &"start"
+nodes = Array[ExtResource("1_5kaya")]([SubResource("Resource_gg6t2")])
+metadata/_custom_type_script = "uid://858db0qbia1v"

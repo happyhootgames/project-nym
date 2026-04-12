@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="HarvestePointData" format=3 uid="uid://bmbhdicmqvmdq"]
+
+[ext_resource type="Script" uid="uid://0rqbp4cvakyu" path="res://resources/data/items/ItemStack.gd" id="1_mca0g"]
+[ext_resource type="Resource" uid="uid://clih518rj1dmv" path="res://resources/items/minerals/gold_item.tres" id="2_uc76l"]
+[ext_resource type="Script" uid="uid://cx1dnupdphjwv" path="res://resources/data/harvest/HarvestPointData.gd" id="3_4mc82"]
+
+[sub_resource type="Resource" id="Resource_rjlvn"]
+script = ExtResource("1_mca0g")
+item_data = ExtResource("2_uc76l")
+quantity = 1
+metadata/_custom_type_script = "uid://0rqbp4cvakyu"
+
+[resource]
+script = ExtResource("3_4mc82")
+id = &"gold_deposit"
+display_name = "Gold Deposit"
+type = 3
+loot_items = Array[ExtResource("1_mca0g")]([SubResource("Resource_rjlvn")])
+metadata/_custom_type_script = "uid://cx1dnupdphjwv"

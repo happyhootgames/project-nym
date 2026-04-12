@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="HarvestePointData" format=3 uid="uid://byd01p5pdl6jx"]
+
+[ext_resource type="Script" uid="uid://0rqbp4cvakyu" path="res://resources/data/items/ItemStack.gd" id="1_3scrr"]
+[ext_resource type="Script" uid="uid://cx1dnupdphjwv" path="res://resources/data/harvest/HarvestPointData.gd" id="1_a8atg"]
+[ext_resource type="Resource" uid="uid://cub8ha51ij4d2" path="res://resources/items/woods/pine_wood_item.tres" id="2_ha2rw"]
+[ext_resource type="Resource" uid="uid://biac8xxqowvd" path="res://resources/items/woods/branch_item.tres" id="3_64eqa"]
+[ext_resource type="Resource" uid="uid://bbo1bsw0ka73a" path="res://resources/items/nuts/chestnut_item.tres" id="4_2rt7f"]
+
+[sub_resource type="Resource" id="Resource_aofqn"]
+script = ExtResource("1_3scrr")
+item_data = ExtResource("2_ha2rw")
+quantity = 1
+metadata/_custom_type_script = "uid://0rqbp4cvakyu"
+
+[sub_resource type="Resource" id="Resource_odxuy"]
+script = ExtResource("1_3scrr")
+item_data = ExtResource("3_64eqa")
+quantity = 1
+metadata/_custom_type_script = "uid://0rqbp4cvakyu"
+
+[sub_resource type="Resource" id="Resource_gsiax"]
+script = ExtResource("1_3scrr")
+item_data = ExtResource("4_2rt7f")
+quantity = 1
+metadata/_custom_type_script = "uid://0rqbp4cvakyu"
+
+[resource]
+script = ExtResource("1_a8atg")
+id = &"pine_tree"
+display_name = "Pine Tree"
+type = 1
+loot_items = Array[ExtResource("1_3scrr")]([SubResource("Resource_aofqn"), SubResource("Resource_odxuy"), SubResource("Resource_gsiax")])
+metadata/_custom_type_script = "uid://cx1dnupdphjwv"

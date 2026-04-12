@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://grrl0tpfmk85" path="res://ui/scripts/controls_menu_ui.gd" id="1_e14t8"]
 [ext_resource type="PackedScene" uid="uid://dmj68xl0jwh5y" path="res://ui/InputRemapRow.tscn" id="2_13a3k"]
 
-[node name="ControlsMenuUI" type="Control" unique_id=322436397 node_paths=PackedStringArray("actions_container", "status_label", "reset_button")]
+[node name="ControlsMenuUI" type="Control" unique_id=322436397 node_paths=PackedStringArray("bindings_container", "reset_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,10 +11,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e14t8")
-actions_container = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ActionsContainer")
-status_label = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/StatusLabel")
+bindings_container = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ActionsContainer")
 reset_button = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ResetToDefaultButton")
-action_row_scene = ExtResource("2_13a3k")
+binding_row_scene = ExtResource("2_13a3k")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1306111273]
 layout_mode = 1

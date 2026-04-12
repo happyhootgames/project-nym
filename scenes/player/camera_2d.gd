@@ -18,7 +18,7 @@ var _zoom_tween: Tween
 
 func _ready() -> void:
 	zoom = default_zoom
-	UIEvents.camera_zoom.connect(_on_zoom_request)
+	GameEventBus.camera_zoom.connect(_on_zoom_request)
 
 
 func set_default_zoom() -> void:

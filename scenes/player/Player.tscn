@@ -164,5 +164,5 @@ debug_color = Color(0.6876446, 0.49988514, 1.92523e-07, 0.41960785)
 
 [connection signal="body_entered" from="ClimbDetectorArea2D" to="." method="_on_climb_detector_area_2d_body_entered"]
 [connection signal="body_exited" from="ClimbDetectorArea2D" to="." method="_on_climb_detector_area_2d_body_exited"]
-[connection signal="body_entered" from="InteractableDetectionArea2D" to="." method="_on_interactable_detection_area_2d_body_entered"]
-[connection signal="body_exited" from="InteractableDetectionArea2D" to="." method="_on_interactable_detection_area_2d_body_exited"]
+[connection signal="area_entered" from="InteractableDetectionArea2D" to="." method="_on_interactable_detection_area_2d_area_entered"]
+[connection signal="area_exited" from="InteractableDetectionArea2D" to="." method="_on_interactable_detection_area_2d_area_exited"]

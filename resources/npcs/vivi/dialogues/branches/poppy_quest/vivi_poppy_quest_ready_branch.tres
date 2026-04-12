@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="DialogueBranch" format=3 uid="uid://cg57iximdwik3"]
+
+[ext_resource type="Script" uid="uid://ck0fe2j5xtmh3" path="res://resources/data/dialogue/DialogueNode.gd" id="1_sg1il"]
+[ext_resource type="Script" uid="uid://bvqtxerutfcjn" path="res://resources/data/dialogue/DialogueChoice.gd" id="2_u8305"]
+[ext_resource type="Script" uid="uid://cu6upuphii38p" path="res://resources/data/dialogue/DialogueActionData.gd" id="3_dwb0n"]
+[ext_resource type="Script" uid="uid://0rqbp4cvakyu" path="res://resources/data/items/ItemStack.gd" id="4_v55ya"]
+[ext_resource type="Script" uid="uid://858db0qbia1v" path="res://resources/data/dialogue/DialogueBranch.gd" id="5_lwg3q"]
+
+[sub_resource type="Resource" id="Resource_ey75w"]
+script = ExtResource("3_dwb0n")
+type = 1
+metadata/_custom_type_script = "uid://cu6upuphii38p"
+
+[sub_resource type="Resource" id="Resource_4hufa"]
+script = ExtResource("2_u8305")
+translation_key = &"DIALOGUE_CHOICE_SAY_NO"
+actions = Array[ExtResource("3_dwb0n")]([SubResource("Resource_ey75w")])
+metadata/_custom_type_script = "uid://bvqtxerutfcjn"
+
+[sub_resource type="Resource" id="Resource_sg1il"]
+script = ExtResource("3_dwb0n")
+type = 3
+quest_id = &"vivi_poppy_quest"
+metadata/_custom_type_script = "uid://cu6upuphii38p"
+
+[sub_resource type="Resource" id="Resource_u8305"]
+script = ExtResource("3_dwb0n")
+type = 1
+metadata/_custom_type_script = "uid://cu6upuphii38p"
+
+[sub_resource type="Resource" id="Resource_dwb0n"]
+script = ExtResource("2_u8305")
+translation_key = &"DIALOGUE_CHOICE_LEAVE"
+actions = Array[ExtResource("3_dwb0n")]([SubResource("Resource_u8305")])
+metadata/_custom_type_script = "uid://bvqtxerutfcjn"
+
+[sub_resource type="Resource" id="Resource_v55ya"]
+script = ExtResource("1_sg1il")
+id = &"completed"
+translation_key = &"DIALOGUE_VIVI_POPPY_QUEST_COMPLETED_1"
+choices = Array[ExtResource("2_u8305")]([SubResource("Resource_dwb0n")])
+metadata/_custom_type_script = "uid://ck0fe2j5xtmh3"
+
+[sub_resource type="Resource" id="Resource_lwg3q"]
+script = ExtResource("3_dwb0n")
+next_node = SubResource("Resource_v55ya")
+metadata/_custom_type_script = "uid://cu6upuphii38p"
+
+[sub_resource type="Resource" id="Resource_tm000"]
+script = ExtResource("2_u8305")
+translation_key = &"DIALOGUE_CHOICE_GIVE_ITEMS"
+actions = Array[ExtResource("3_dwb0n")]([SubResource("Resource_sg1il"), SubResource("Resource_lwg3q")])
+metadata/_custom_type_script = "uid://bvqtxerutfcjn"
+
+[sub_resource type="Resource" id="Resource_gg6t2"]
+script = ExtResource("1_sg1il")
+id = &"start"
+translation_key = &"DIALOGUE_VIVI_POPPY_QUEST_READY_1"
+choices = Array[ExtResource("2_u8305")]([SubResource("Resource_4hufa"), SubResource("Resource_tm000")])
+metadata/_custom_type_script = "uid://ck0fe2j5xtmh3"
+
+[resource]
+script = ExtResource("5_lwg3q")
+id = &"quest_ready"
+start_node_id = &"start"
+nodes = Array[ExtResource("1_sg1il")]([SubResource("Resource_gg6t2"), SubResource("Resource_v55ya")])
+metadata/_custom_type_script = "uid://858db0qbia1v"

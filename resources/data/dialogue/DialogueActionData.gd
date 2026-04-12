@@ -7,17 +7,15 @@ enum Type {
 	ACCEPT_QUEST,
 	TURN_IN_QUEST,
 	INCREMENT_FRIENDSHIP,
-	RECEIVE_ITEM_FROM_NPC,
-	GIVE_ITEM_TO_NPC
+	RECEIVE_ITEM_STACKS_FROM_NPC,
+	GIVE_ITEM_STACKS_TO_NPC
 }
 
 @export var type: Type = Type.NEXT
 
-@export var int_value: int = 0
-@export var string_value: String = ""
-
-@export var item_data: ItemData
-@export var quest_id: String = ""
+@export var item_stacks: Array[ItemStack]
+@export var quest_id: StringName = &""
+@export var increment_friendship_amount: int
 
 @export var next_node: DialogueNode
 @export var error_node: DialogueNode

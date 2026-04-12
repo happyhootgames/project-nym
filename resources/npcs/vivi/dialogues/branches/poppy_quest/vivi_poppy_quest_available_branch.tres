@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="DialogueBranch" format=3 uid="uid://bragr26i1xie4"]
+
+[ext_resource type="Script" uid="uid://ck0fe2j5xtmh3" path="res://resources/data/dialogue/DialogueNode.gd" id="1_s4xie"]
+[ext_resource type="Script" uid="uid://bvqtxerutfcjn" path="res://resources/data/dialogue/DialogueChoice.gd" id="2_y3t7p"]
+[ext_resource type="Script" uid="uid://858db0qbia1v" path="res://resources/data/dialogue/DialogueBranch.gd" id="2_yb2x0"]
+[ext_resource type="Script" uid="uid://cu6upuphii38p" path="res://resources/data/dialogue/DialogueActionData.gd" id="3_0o38e"]
+[ext_resource type="Script" uid="uid://0rqbp4cvakyu" path="res://resources/data/items/ItemStack.gd" id="4_mb6ec"]
+
+[sub_resource type="Resource" id="Resource_8g5oa"]
+script = ExtResource("3_0o38e")
+type = 2
+quest_id = &"vivi_poppy_quest"
+metadata/_custom_type_script = "uid://cu6upuphii38p"
+
+[sub_resource type="Resource" id="Resource_nq7qe"]
+script = ExtResource("3_0o38e")
+type = 1
+metadata/_custom_type_script = "uid://cu6upuphii38p"
+
+[sub_resource type="Resource" id="Resource_8kseb"]
+script = ExtResource("2_y3t7p")
+translation_key = &"DIALOGUE_CHOICE_ACCEPT"
+actions = Array[ExtResource("3_0o38e")]([SubResource("Resource_8g5oa"), SubResource("Resource_nq7qe")])
+metadata/_custom_type_script = "uid://bvqtxerutfcjn"
+
+[sub_resource type="Resource" id="Resource_ueulp"]
+script = ExtResource("3_0o38e")
+type = 1
+metadata/_custom_type_script = "uid://cu6upuphii38p"
+
+[sub_resource type="Resource" id="Resource_73c24"]
+script = ExtResource("2_y3t7p")
+translation_key = &"DIALOGUE_CHOICE_REFUSE"
+actions = Array[ExtResource("3_0o38e")]([SubResource("Resource_ueulp")])
+metadata/_custom_type_script = "uid://bvqtxerutfcjn"
+
+[sub_resource type="Resource" id="Resource_fspba"]
+script = ExtResource("1_s4xie")
+id = &"start"
+translation_key = &"DIALOGUE_VIVI_POPPY_QUEST_REQUEST_1"
+choices = Array[ExtResource("2_y3t7p")]([SubResource("Resource_8kseb"), SubResource("Resource_73c24")])
+metadata/_custom_type_script = "uid://ck0fe2j5xtmh3"
+
+[resource]
+script = ExtResource("2_yb2x0")
+id = &"quest_available"
+start_node_id = &"start"
+nodes = Array[ExtResource("1_s4xie")]([SubResource("Resource_fspba")])
+metadata/_custom_type_script = "uid://858db0qbia1v"

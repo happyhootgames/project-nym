@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DialogueData" format=3 uid="uid://bjtr2uhquvqsc"]
+
+[ext_resource type="Script" uid="uid://54g80cfmn845" path="res://resources/data/dialogue/DialogueEntry.gd" id="1_t41p6"]
+[ext_resource type="Resource" uid="uid://by3gvymx4natc" path="res://resources/npcs/vivi/dialogues/entries/vivi_default_talk_entry.tres" id="2_r2cv7"]
+[ext_resource type="Resource" uid="uid://dfpefa7qvqvon" path="res://resources/npcs/vivi/dialogues/entries/vivi_first_meeting_entry.tres" id="3_23jow"]
+[ext_resource type="Resource" uid="uid://cafntyy82o8bq" path="res://resources/npcs/vivi/dialogues/entries/vivi_quest_poppy_active_entry.tres" id="4_by2jt"]
+[ext_resource type="Resource" uid="uid://lvjy1yl7i8ml" path="res://resources/npcs/vivi/dialogues/entries/vivi_quest_poppy_available_entry.tres" id="5_cprix"]
+[ext_resource type="Resource" uid="uid://dau272cjowfyj" path="res://resources/npcs/vivi/dialogues/entries/vivi_quest_poppy_ready_entry.tres" id="6_0k7sy"]
+[ext_resource type="Script" uid="uid://oh2hce2yjwiv" path="res://resources/data/dialogue/DialogueData.gd" id="7_pofek"]
+
+[resource]
+script = ExtResource("7_pofek")
+entries = Array[ExtResource("1_t41p6")]([ExtResource("2_r2cv7"), ExtResource("3_23jow"), ExtResource("4_by2jt"), ExtResource("5_cprix"), ExtResource("6_0k7sy")])
+metadata/_custom_type_script = "uid://oh2hce2yjwiv"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="NPCData" format=3 uid="uid://cf485q71j6et4"]
+
+[ext_resource type="Resource" uid="uid://bjtr2uhquvqsc" path="res://resources/npcs/vivi/vivi_dialogue.tres" id="1_fcjip"]
+[ext_resource type="Script" uid="uid://o7lmhkbhy12n" path="res://resources/data/npc/NPCData.gd" id="2_oq5mm"]
+[ext_resource type="Texture2D" uid="uid://475xd38ao225" path="res://assets/Platformer/Platformer Assets Extra Animations & Enemies/Enemy sprites/grassBlock.png" id="3_8ds5r"]
+
+[resource]
+script = ExtResource("2_oq5mm")
+id = &"vivi"
+name_key = &"NPC_VIVI"
+display_name = "Vivi"
+sprite = ExtResource("3_8ds5r")
+dialogue = ExtResource("1_fcjip")
+metadata/_custom_type_script = "uid://o7lmhkbhy12n"

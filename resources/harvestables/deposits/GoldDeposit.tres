@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="HarvestResource" format=3 uid="uid://bmbhdicmqvmdq"]
-
-[ext_resource type="Script" uid="uid://cx1dnupdphjwv" path="res://resources/data/harvest/HarvestableNode.gd" id="1_avdug"]
-
-[resource]
-script = ExtResource("1_avdug")
-id = &"gold_deposit"
-display_name = "Gold Deposit"
-metadata/_custom_type_script = "uid://cx1dnupdphjwv"

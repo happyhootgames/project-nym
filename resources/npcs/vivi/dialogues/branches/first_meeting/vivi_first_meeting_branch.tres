@@ -1,0 +1,59 @@
+[gd_resource type="Resource" script_class="DialogueBranch" format=3 uid="uid://yg308ev8rtfr"]
+
+[ext_resource type="Script" uid="uid://ck0fe2j5xtmh3" path="res://resources/data/dialogue/DialogueNode.gd" id="1_a6pql"]
+[ext_resource type="Script" uid="uid://858db0qbia1v" path="res://resources/data/dialogue/DialogueBranch.gd" id="2_4vk51"]
+[ext_resource type="Script" uid="uid://cu6upuphii38p" path="res://resources/data/dialogue/DialogueActionData.gd" id="2_q4bf2"]
+[ext_resource type="Script" uid="uid://bvqtxerutfcjn" path="res://resources/data/dialogue/DialogueChoice.gd" id="3_sw6si"]
+[ext_resource type="Script" uid="uid://0rqbp4cvakyu" path="res://resources/data/items/ItemStack.gd" id="4_sw6si"]
+
+[sub_resource type="Resource" id="Resource_sw6si"]
+script = ExtResource("2_q4bf2")
+type = 1
+metadata/_custom_type_script = "uid://cu6upuphii38p"
+
+[sub_resource type="Resource" id="Resource_1fal4"]
+script = ExtResource("2_q4bf2")
+type = 4
+increment_friendship_amount = 1
+metadata/_custom_type_script = "uid://cu6upuphii38p"
+
+[sub_resource type="Resource" id="Resource_q4bf2"]
+script = ExtResource("3_sw6si")
+translation_key = &"DIALOGUE_CHOICE_LEAVE"
+actions = Array[ExtResource("2_q4bf2")]([SubResource("Resource_sw6si"), SubResource("Resource_1fal4")])
+metadata/_custom_type_script = "uid://bvqtxerutfcjn"
+
+[sub_resource type="Resource" id="Resource_vk7um"]
+script = ExtResource("1_a6pql")
+id = &"introduction"
+translation_key = &"DIALOGUE_VIVI_FIRST_MEETING_2"
+text = "Enchantée, Nym. Je suis Vivi. J'espère qu'on se recroisera encore !"
+choices = Array[ExtResource("3_sw6si")]([SubResource("Resource_q4bf2")])
+metadata/_custom_type_script = "uid://ck0fe2j5xtmh3"
+
+[sub_resource type="Resource" id="Resource_13i7d"]
+script = ExtResource("2_q4bf2")
+next_node = SubResource("Resource_vk7um")
+metadata/_custom_type_script = "uid://cu6upuphii38p"
+
+[sub_resource type="Resource" id="Resource_8tfpw"]
+script = ExtResource("3_sw6si")
+translation_key = &"DIALOGUE_CHOICE_SILENCE"
+text = "..."
+actions = Array[ExtResource("2_q4bf2")]([SubResource("Resource_13i7d")])
+metadata/_custom_type_script = "uid://bvqtxerutfcjn"
+
+[sub_resource type="Resource" id="Resource_ibmby"]
+script = ExtResource("1_a6pql")
+id = &"start"
+translation_key = &"DIALOGUE_VIVI_FIRST_MEETING_1"
+text = "Hé bonjour! Un humain? Ce n'est pas commun ça... Comment tu t'appelles?"
+choices = Array[ExtResource("3_sw6si")]([SubResource("Resource_8tfpw")])
+metadata/_custom_type_script = "uid://ck0fe2j5xtmh3"
+
+[resource]
+script = ExtResource("2_4vk51")
+id = &"first_meeting"
+start_node_id = &"start"
+nodes = Array[ExtResource("1_a6pql")]([SubResource("Resource_ibmby"), SubResource("Resource_vk7um")])
+metadata/_custom_type_script = "uid://858db0qbia1v"

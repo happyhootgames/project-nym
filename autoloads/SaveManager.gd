@@ -1,97 +1,126 @@
 extends Node
 
-const SAVE_PATH := "res://savegame.json"
+
+# =========================================================
+# SIGNALS
+# =========================================================
 
 signal data_loaded
 
-var player: Player = null
-const EXPECTED_KEYS = [
+
+# =========================================================
+# CONSTANTS
+# =========================================================
+
+const SAVE_PATH := "user://savegame.json"
+
+# All top-level keys expected in the save file.
+# Any missing key is initialized to {} on load — handles first launch,
+# corrupted saves, and new keys added in future updates.
+const EXPECTED_KEYS := [
 	"player",
 	"inventory",
 	"friendships",
-	"quests"
+	"quests",
+	"settings",
 ]
+
+
+# =========================================================
+# STATE
+# =========================================================
+
 var data: Dictionary = {}
+var player: Player = null
+
+
+# =========================================================
+# LIFECYCLE
+# =========================================================
 
 func _ready() -> void:
-	load_game()
+	# Deferred so all autoloads and scene nodes have finished _ready()
+	# before data_loaded is emitted — prevents missed signal connections.
+	load_game.call_deferred()
 
-# Save all game data
+
+# =========================================================
+# SAVE
+# =========================================================
+
+# Collects data from all systems and writes it to disk.
+# Returns false if the file could not be opened.
 func save_game() -> bool:
-	
-	print("🔥 SAVING... 🔥")
-	
-
-	# Save player if found
-	data["player"] = player.save_data()
-	data["inventory"] = InventoryManager.save_data()
+	data["player"]      = player.save_data()
+	data["inventory"]   = InventoryManager.save_data()
 	data["friendships"] = FriendshipManager.save_data()
-	data["quests"] = QuestManager.save_data()
+	data["quests"]      = QuestManager.save_data()
 
-	## Save all persistent nodes
-	#for node in get_tree().get_nodes_in_group("persist"):
-		#if node.has_method("data"):
-			#data["persist_nodes"].append({
-				#"scene_path": node.scene_file_path,
-				#"parent_path": str(node.get_parent().get_path()),
-				#"node_path": str(node.get_path()),
-				#"data": node.save_data()
-			#})
-
-	# Convert dictionary to JSON string
 	var json_string := JSON.stringify(data, "\t")
+	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 
-	# Open file in write mode
-	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if file == null:
-		push_error("Save failed: cannot open file")
+		push_error("SaveManager: cannot open file for writing at %s" % SAVE_PATH)
 		return false
 
-	# Write JSON
 	file.store_string(json_string)
-	print("🔥 SAVED 🔥\n",json_string)
 	return true
 
 
-# Load all game data
+# =========================================================
+# LOAD
+# =========================================================
+
+# Entry point for loading. Always emits data_loaded — even on first launch.
 func load_game() -> void:
-	# Check if save exists
-	if not FileAccess.file_exists(SAVE_PATH):
-		push_warning("No save file found")
+	data = {}
+
 	if FileAccess.file_exists(SAVE_PATH):
-		# Open file in read mode
-		var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
-		if file == null:
-			push_error("Load failed: cannot open file")
+		_load_from_file()
 
-		# Read file content
-		var json_text := file.get_as_text()
-
-		# Parse JSON
-		var parsed = JSON.parse_string(json_text)
-		if parsed == null:
-			push_error("Load failed: invalid JSON")
-
-		data = parsed
-	for key in EXPECTED_KEYS:
-			if not data.has(key):
-				data[key] = {}
-	
-	print(JSON.stringify(data,"\t"))
+	_apply_defaults()
 	data_loaded.emit()
-
-	## Load persistent nodes
-	#if data.has("persist_nodes"):
-		#for entry in data["persist_nodes"]:
-			#var node_path = NodePath(entry["node_path"])
-#
-			## If node already exists, load directly
-			#if has_node(node_path):
-				#var existing_node = get_node(node_path)
-				#if existing_node.has_method("load_data"):
-					#existing_node.load_data(entry["data"])
+	_debug()
 
 
+# Reads and parses the save file into data.
+# On any failure, data stays empty and _apply_defaults() takes over.
+func _load_from_file() -> void:
+	var file := FileAccess.open(SAVE_PATH, FileAccess.READ)
+	if file == null:
+		push_error("SaveManager: cannot open file for reading at %s" % SAVE_PATH)
+		return
 
+	var parsed = JSON.parse_string(file.get_as_text())
+	if parsed == null:
+		push_error("SaveManager: invalid JSON — starting fresh")
+		return
+
+	data = parsed
+
+
+# Ensures all expected top-level keys exist, filling gaps with empty dicts.
+func _apply_defaults() -> void:
+	for key in EXPECTED_KEYS:
+		if not data.has(key):
+			data[key] = {}
+
+
+# =========================================================
+# REGISTRATION
+# =========================================================
+
+# Called by the Player node in _ready() to register itself for saving.
 func register_player(node: Player) -> void:
 	player = node
+
+
+# =========================================================
+# DEBUG
+# =========================================================
+
+func _debug() -> void:
+	print_debug("💾 SaveManager | keys loaded: %s | file exists: %s" % [
+		data.keys(),
+		FileAccess.file_exists(SAVE_PATH)
+	])

@@ -1,7 +1,7 @@
 extends Resource
 class_name QuestData
 
-@export var id: String = ""
+@export var id: StringName = &""
 @export var title: String = ""
 @export_multiline() var description: String = ""
 @export var giver_npc: NPCData

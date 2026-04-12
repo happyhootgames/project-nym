@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cr416ldkfql6m"]
+
+[ext_resource type="PackedScene" uid="uid://dx3wmmaohgix1" path="res://scenes/_base/_HarvestPointBase.tscn" id="1_m0uup"]
+[ext_resource type="Resource" uid="uid://dg61mkq7l48x8" path="res://resources/harvest/bushes/blackberry_bush.tres" id="2_4rfjt"]
+[ext_resource type="Texture2D" uid="uid://c2k1ox3hbpn3i" path="res://assets/Foliage Pack/PNG/Default size/foliagePack_049.png" id="2_th7x0"]
+
+[node name="BlackberryBush" unique_id=1612222142 instance=ExtResource("1_m0uup")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=288620171]
+position = Vector2(0, -27)
+texture = ExtResource("2_th7x0")
+
+[node name="HarvestInteractable" parent="." index="2" unique_id=809379557]
+harvest_point_data = ExtResource("2_4rfjt")

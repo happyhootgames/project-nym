@@ -26,6 +26,8 @@
 [ext_resource type="PackedScene" uid="uid://cg3atecdtw5vi" path="res://scenes/harvest_points/trees/PineTree.tscn" id="21_dgldv"]
 [ext_resource type="PackedScene" uid="uid://cr416ldkfql6m" path="res://scenes/harvest_points/bushes/BlackberryBush.tscn" id="28_n2fr6"]
 [ext_resource type="PackedScene" uid="uid://d0qfknyu5sr6r" path="res://scenes/npcs/ViviNPC.tscn" id="28_uni40"]
+[ext_resource type="Script" uid="uid://dvh6r3nwpkuam" path="res://scenes/components/world_lighting.gd" id="29_aqlsr"]
+[ext_resource type="PackedScene" uid="uid://bmx05dlgv6lu7" path="res://scenes/weather/WeatherLayer.tscn" id="30_n2fr6"]
 [ext_resource type="PackedScene" uid="uid://c0vy8c6vlai5j" path="res://scenes/harvest_points/flowers/PoppyFlower.tscn" id="31_128ka"]
 [ext_resource type="PackedScene" uid="uid://cjjd4g8rtskhw" path="res://scenes/harvest_points/deposits/StoneDeposit.tscn" id="32_b64vv"]
 
@@ -354,3 +356,10 @@ texture = ExtResource("5_2pad8")
 position = Vector2(2553, 594.00006)
 scale = Vector2(2, 2)
 texture = ExtResource("5_2pad8")
+
+[node name="WorldLighting" type="CanvasModulate" parent="." unique_id=408170416]
+visible = false
+script = ExtResource("29_aqlsr")
+metadata/_custom_type_script = "uid://dvh6r3nwpkuam"
+
+[node name="WeatherLayer" parent="." unique_id=1598672660 instance=ExtResource("30_n2fr6")]

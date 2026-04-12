@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="HarvestePointData" format=3 uid="uid://dg61mkq7l48x8"]
+[gd_resource type="Resource" script_class="HarvestPointData" format=3 uid="uid://dg61mkq7l48x8"]
 
 [ext_resource type="Script" uid="uid://0rqbp4cvakyu" path="res://resources/data/items/ItemStack.gd" id="1_0robg"]
 [ext_resource type="Resource" uid="uid://kaefqcqcb014" path="res://resources/items/berries/blackberry_item.tres" id="2_wkkbi"]

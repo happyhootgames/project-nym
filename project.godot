@@ -28,7 +28,10 @@ InputRouterManager="*uid://osk12msl68cv"
 QuestManager="*uid://dyty5fhh5qrlm"
 InventoryManager="*uid://c7nb1d781qu0h"
 DialogueManager="*uid://batfwwfk2x11l"
+TimeManager="*uid://tmrrd5pmc8i0"
 FriendshipManager="*uid://cvygtu1iu2yd3"
+WeatherManager="*uid://dqq1bx0jt2ret"
+WalletManager="*uid://ckp04oyoyy5gb"
 
 [display]
 

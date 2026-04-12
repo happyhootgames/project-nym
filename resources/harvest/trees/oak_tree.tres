@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="HarvestePointData" format=3 uid="uid://7t7y7elivfd7"]
+
+[ext_resource type="Script" uid="uid://cx1dnupdphjwv" path="res://resources/data/harvest/HarvestPointData.gd" id="1_517ln"]
+[ext_resource type="Script" uid="uid://0rqbp4cvakyu" path="res://resources/data/items/ItemStack.gd" id="1_yyebi"]
+[ext_resource type="Resource" uid="uid://dojjpjrvtcrwb" path="res://resources/items/woods/oak_wood_item.tres" id="2_ggwbk"]
+[ext_resource type="Resource" uid="uid://biac8xxqowvd" path="res://resources/items/woods/branch_item.tres" id="3_b2dow"]
+[ext_resource type="Resource" uid="uid://b4012sn540h1v" path="res://resources/items/nuts/acorn_item.tres" id="4_x7um3"]
+
+[sub_resource type="Resource" id="Resource_n5kr1"]
+script = ExtResource("1_yyebi")
+item_data = ExtResource("2_ggwbk")
+quantity = 1
+metadata/_custom_type_script = "uid://0rqbp4cvakyu"
+
+[sub_resource type="Resource" id="Resource_6c7by"]
+script = ExtResource("1_yyebi")
+item_data = ExtResource("3_b2dow")
+quantity = 1
+metadata/_custom_type_script = "uid://0rqbp4cvakyu"
+
+[sub_resource type="Resource" id="Resource_yesgc"]
+script = ExtResource("1_yyebi")
+item_data = ExtResource("4_x7um3")
+quantity = 1
+metadata/_custom_type_script = "uid://0rqbp4cvakyu"
+
+[resource]
+script = ExtResource("1_517ln")
+id = &"oak_tree"
+display_name = "Oak Tree"
+type = 1
+loot_items = Array[ExtResource("1_yyebi")]([SubResource("Resource_n5kr1"), SubResource("Resource_6c7by"), SubResource("Resource_yesgc")])
+metadata/_custom_type_script = "uid://cx1dnupdphjwv"

@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dx3wmmaohgix1"]
+
+[ext_resource type="Script" uid="uid://bpbeebmexfj21" path="res://scenes/_base/_harvest_point_base.gd" id="1_6usjj"]
+[ext_resource type="Script" uid="uid://lxj2pqe2div2" path="res://scenes/components/harvest_interactable.gd" id="2_dc8d1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0thn7"]
+radius = 9.999999
+height = 104.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rniek"]
+height = 100.0
+
+[node name="_HarvestPointBase" type="StaticBody2D" unique_id=1612222142]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_6usjj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=288620171]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=986263407]
+visible = false
+position = Vector2(0, -9)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_0thn7")
+disabled = true
+debug_color = Color(0.99999994, 0.0006922646, 0.12040537, 0.41960785)
+
+[node name="HarvestInteractable" type="Area2D" parent="." unique_id=809379557 node_paths=PackedStringArray("_respawn_timer")]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("2_dc8d1")
+_respawn_timer = NodePath("../RespawnTimer")
+metadata/_custom_type_script = "uid://lxj2pqe2div2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HarvestInteractable" unique_id=1458579339]
+position = Vector2(0, -9)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_rniek")
+debug_color = Color(0.67249745, 0.5083763, 0, 0.41960785)
+
+[node name="RespawnTimer" type="Timer" parent="." unique_id=1284754398]
+
+[connection signal="timeout" from="RespawnTimer" to="HarvestInteractable" method="_on_respawn_timer_timeout"]

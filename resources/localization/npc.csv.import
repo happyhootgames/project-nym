@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c76kxf5fwttbh"
+
+[deps]
+
+files=["res://resources/localization/npc.fr.translation", "res://resources/localization/npc.en.translation"]
+
+source_file="res://resources/localization/npc.csv"
+dest_files=["res://resources/localization/npc.fr.translation", "res://resources/localization/npc.en.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

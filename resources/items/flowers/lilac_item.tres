@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://vq7qll1ovwkv"]
+
+[ext_resource type="Resource" uid="uid://d0d8yhp2ybuv4" path="res://resources/item_categories/flower.tres" id="1_vqxgb"]
+[ext_resource type="Texture2D" uid="uid://bivi2ccjprpkr" path="res://assets/testing_placeholders/cozy_grove/items_icons/Purple_Lilac_Wild.webp" id="2_83wsf"]
+[ext_resource type="Script" uid="uid://0ynqbtxdaskc" path="res://resources/data/items/ItemData.gd" id="3_6ao0h"]
+
+[resource]
+script = ExtResource("3_6ao0h")
+id = &"lilac"
+display_name = "Lilac"
+icon = ExtResource("2_83wsf")
+category = ExtResource("1_vqxgb")
+metadata/_custom_type_script = "uid://0ynqbtxdaskc"

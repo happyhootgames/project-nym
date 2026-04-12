@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://xtjk6s2nj8gi"]
+
+[ext_resource type="Resource" uid="uid://d0d8yhp2ybuv4" path="res://resources/item_categories/flower.tres" id="1_0legf"]
+[ext_resource type="Texture2D" uid="uid://dq8v36a06jibn" path="res://assets/testing_placeholders/cozy_grove/items_icons/Red_Poppy_Wild.webp" id="2_7qrrn"]
+[ext_resource type="Script" uid="uid://0ynqbtxdaskc" path="res://resources/data/items/ItemData.gd" id="3_no3rh"]
+
+[resource]
+script = ExtResource("3_no3rh")
+id = &"poppy"
+display_name = "Poppy"
+icon = ExtResource("2_7qrrn")
+category = ExtResource("1_0legf")
+metadata/_custom_type_script = "uid://0ynqbtxdaskc"

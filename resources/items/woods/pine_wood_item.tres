@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cub8ha51ij4d2"]
+
+[ext_resource type="Resource" uid="uid://ny1uqhekqgcv" path="res://resources/item_categories/wood.tres" id="1_0vndt"]
+[ext_resource type="Texture2D" uid="uid://fwt4ce0o3owy" path="res://assets/testing_placeholders/cozy_grove/items_icons/Hardwood.webp" id="1_h6mo6"]
+[ext_resource type="Script" uid="uid://0ynqbtxdaskc" path="res://resources/data/items/ItemData.gd" id="2_0vndt"]
+
+[resource]
+script = ExtResource("2_0vndt")
+id = &"blueberry"
+display_name = "Blueberry"
+icon = ExtResource("1_h6mo6")
+category = ExtResource("1_0vndt")
+metadata/_custom_type_script = "uid://0ynqbtxdaskc"

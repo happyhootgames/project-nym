@@ -1,11 +1,10 @@
 [gd_resource type="Resource" script_class="QuestDatabase" format=3 uid="uid://l0ytl3y0xit0"]
 
 [ext_resource type="Script" uid="uid://cpp7npivag8su" path="res://resources/data/quest/QuestData.gd" id="1_fi6rn"]
-[ext_resource type="Resource" uid="uid://be1jtpxnov034" path="res://resources/quests/gus_get_branches_quest.tres" id="2_cp43x"]
-[ext_resource type="Resource" uid="uid://75wkjkra4ney" path="res://resources/quests/hank_get_poppies_quest.tres" id="3_pcmqj"]
+[ext_resource type="Resource" uid="uid://cyfnjjtw5nqsx" path="res://resources/quests/vivi_poppy_quest.tres" id="2_n2a0v"]
 [ext_resource type="Script" uid="uid://k4o4v5m6evib" path="res://resources/data/quest/QuestDatabase.gd" id="4_n4726"]
 
 [resource]
 script = ExtResource("4_n4726")
-quests = Array[ExtResource("1_fi6rn")]([ExtResource("2_cp43x"), ExtResource("3_pcmqj")])
+quests = Array[ExtResource("1_fi6rn")]([ExtResource("2_n2a0v")])
 metadata/_custom_type_script = "uid://k4o4v5m6evib"

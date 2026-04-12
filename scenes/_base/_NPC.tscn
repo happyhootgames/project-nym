@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://dlffvqqp1ie56"]
+
+[ext_resource type="Script" uid="uid://cfpb572q745de" path="res://scenes/_base/_npc.gd" id="1_o8c52"]
+[ext_resource type="Texture2D" uid="uid://cwt0l41agwbm3" path="res://assets/Platformer/Platformer Assets Extra Animations & Enemies/Enemy sprites/slimeBlock_dead.png" id="2_vpi4k"]
+[ext_resource type="Script" uid="uid://3gxaojfsp47v" path="res://scenes/components/npc_interactable.gd" id="3_vpi4k"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o8c52"]
+radius = 26.0
+height = 186.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ml3ft"]
+height = 52.0
+
+[node name="_NPC" type="CharacterBody2D" unique_id=340429217 node_paths=PackedStringArray("sprite_2d", "name_anchor", "name_label")]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_o8c52")
+sprite_2d = NodePath("Sprite2D")
+name_anchor = NodePath("Marker2D")
+name_label = NodePath("Marker2D/Label")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=716758563]
+texture = ExtResource("2_vpi4k")
+offset = Vector2(0, -26)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1074943148]
+visible = false
+position = Vector2(0, 3)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_o8c52")
+disabled = true
+debug_color = Color(0.99549395, 0, 0.16997471, 0.41960785)
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=57187961]
+position = Vector2(0, -300)
+
+[node name="Label" type="Label" parent="Marker2D" unique_id=956085100]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 60
+text = "NPC"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NPCInteractable" type="Area2D" parent="." unique_id=1618853303]
+collision_layer = 0
+collision_mask = 64
+script = ExtResource("3_vpi4k")
+metadata/_custom_type_script = "uid://3gxaojfsp47v"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCInteractable" unique_id=150213126]
+position = Vector2(-1, -10)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_ml3ft")
+debug_color = Color(0.676148, 0.5063669, 9.62615e-07, 0.41960785)

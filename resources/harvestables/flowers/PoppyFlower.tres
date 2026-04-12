@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="HarvestResource" format=3 uid="uid://chqnfirsc8e38"]
-
-[ext_resource type="Script" uid="uid://cx1dnupdphjwv" path="res://resources/data/harvest/HarvestableNode.gd" id="1_dkvjx"]
-
-[resource]
-script = ExtResource("1_dkvjx")
-id = &"poppy_flower"
-display_name = "Poppy Flower"
-metadata/_custom_type_script = "uid://cx1dnupdphjwv"

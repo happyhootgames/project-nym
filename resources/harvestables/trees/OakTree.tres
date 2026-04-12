@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="HarvestResource" format=3 uid="uid://7t7y7elivfd7"]
-
-[ext_resource type="Script" uid="uid://cx1dnupdphjwv" path="res://resources/data/harvest/HarvestableNode.gd" id="1_517ln"]
-
-[resource]
-script = ExtResource("1_517ln")
-id = &"oak_tree"
-display_name = "Oak Tree"
-metadata/_custom_type_script = "uid://cx1dnupdphjwv"

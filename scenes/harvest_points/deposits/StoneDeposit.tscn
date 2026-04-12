@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cjjd4g8rtskhw"]
+
+[ext_resource type="PackedScene" uid="uid://dx3wmmaohgix1" path="res://scenes/_base/_HarvestPointBase.tscn" id="1_yt5c0"]
+[ext_resource type="Texture2D" uid="uid://46pkf6qdxntm" path="res://assets/Foliage Pack/PNG/Default size/foliagePack_055.png" id="2_7dysv"]
+[ext_resource type="Resource" uid="uid://dlydl30un6sun" path="res://resources/harvest/deposits/stone_deposit.tres" id="2_12ebu"]
+
+[node name="StoneDeposit" unique_id=1612222142 instance=ExtResource("1_yt5c0")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=288620171]
+position = Vector2(0, -29)
+texture = ExtResource("2_7dysv")
+
+[node name="HarvestInteractable" parent="." index="2" unique_id=809379557]
+harvest_point_data = ExtResource("2_12ebu")

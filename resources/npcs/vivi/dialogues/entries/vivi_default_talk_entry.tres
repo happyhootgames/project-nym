@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueEntry" format=3 uid="uid://by3gvymx4natc"]
+
+[ext_resource type="Resource" uid="uid://blperixdrd35t" path="res://resources/npcs/vivi/dialogues/branches/default_talk/vivi_default_talk_branch.tres" id="1_3mkrh"]
+[ext_resource type="Script" uid="uid://isyg5oja3w7b" path="res://resources/data/dialogue/DialogueCondition.gd" id="1_h6djy"]
+[ext_resource type="Script" uid="uid://54g80cfmn845" path="res://resources/data/dialogue/DialogueEntry.gd" id="2_3mkrh"]
+
+[resource]
+script = ExtResource("2_3mkrh")
+id = &"default_talk"
+branch = ExtResource("1_3mkrh")
+metadata/_custom_type_script = "uid://54g80cfmn845"

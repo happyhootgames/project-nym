@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://d0qfknyu5sr6r"]
+
+[ext_resource type="PackedScene" uid="uid://dlffvqqp1ie56" path="res://scenes/_base/_NPC.tscn" id="1_8l4va"]
+[ext_resource type="Resource" uid="uid://cf485q71j6et4" path="res://resources/npcs/vivi/vivi_npc.tres" id="2_veh5s"]
+
+[node name="ViviNPC" unique_id=340429217 instance=ExtResource("1_8l4va")]
+npc_data = ExtResource("2_veh5s")

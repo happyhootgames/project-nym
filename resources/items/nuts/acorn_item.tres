@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b4012sn540h1v"]
+
+[ext_resource type="Resource" uid="uid://d4mw2jo0v7s27" path="res://resources/item_categories/nut.tres" id="1_0rg8k"]
+[ext_resource type="Texture2D" uid="uid://boykjwnpyxlko" path="res://assets/testing_placeholders/cozy_grove/items_icons/Acorn.webp" id="2_0rg8k"]
+[ext_resource type="Script" uid="uid://0ynqbtxdaskc" path="res://resources/data/items/ItemData.gd" id="3_050a4"]
+
+[resource]
+script = ExtResource("3_050a4")
+id = &"acorn"
+display_name = "Acorn"
+icon = ExtResource("2_0rg8k")
+category = ExtResource("1_0rg8k")
+metadata/_custom_type_script = "uid://0ynqbtxdaskc"

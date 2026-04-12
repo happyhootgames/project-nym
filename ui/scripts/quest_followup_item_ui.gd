@@ -11,7 +11,7 @@ func _ready() -> void:
 func setup(quest: QuestInstance) -> void:
 	quest_name_label.text = quest.quest_data.title
 	if quest.status == QuestInstance.Status.READY_TO_TURN_IN:
-		quest_status_label.text = "Retourne voir "+quest.quest_data.receiver_npc.show_name
+		quest_status_label.text = "Retourne voir "+quest.quest_data.receiver_npc.display_name
 	else:
 		var objectives: String = ""
 		for stack in quest.quest_data.required_items:

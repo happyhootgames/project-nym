@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogueEntry" format=3 uid="uid://lvjy1yl7i8ml"]
+
+[ext_resource type="Script" uid="uid://isyg5oja3w7b" path="res://resources/data/dialogue/DialogueCondition.gd" id="1_cd8po"]
+[ext_resource type="Resource" uid="uid://bragr26i1xie4" path="res://resources/npcs/vivi/dialogues/branches/poppy_quest/vivi_poppy_quest_available_branch.tres" id="1_vgeg4"]
+[ext_resource type="Script" uid="uid://54g80cfmn845" path="res://resources/data/dialogue/DialogueEntry.gd" id="2_vgeg4"]
+
+[sub_resource type="Resource" id="Resource_cd8po"]
+script = ExtResource("1_cd8po")
+quest_id = &"vivi_poppy_quest"
+metadata/_custom_type_script = "uid://isyg5oja3w7b"
+
+[resource]
+script = ExtResource("2_vgeg4")
+id = &"quest_poppy_available"
+branch = ExtResource("1_vgeg4")
+conditions = Array[ExtResource("1_cd8po")]([SubResource("Resource_cd8po")])
+metadata/_custom_type_script = "uid://54g80cfmn845"

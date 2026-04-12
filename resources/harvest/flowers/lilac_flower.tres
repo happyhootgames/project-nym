@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="HarvestePointData" format=3 uid="uid://cnn5po0cybs57"]
+
+[ext_resource type="Script" uid="uid://0rqbp4cvakyu" path="res://resources/data/items/ItemStack.gd" id="1_bgiar"]
+[ext_resource type="Resource" uid="uid://vq7qll1ovwkv" path="res://resources/items/flowers/lilac_item.tres" id="2_573lh"]
+[ext_resource type="Script" uid="uid://cx1dnupdphjwv" path="res://resources/data/harvest/HarvestPointData.gd" id="3_rt7a8"]
+
+[sub_resource type="Resource" id="Resource_c6gvg"]
+script = ExtResource("1_bgiar")
+item_data = ExtResource("2_573lh")
+quantity = 1
+metadata/_custom_type_script = "uid://0rqbp4cvakyu"
+
+[resource]
+script = ExtResource("3_rt7a8")
+id = &"lilac_flower"
+display_name = "Lilac Flower"
+type = 2
+loot_items = Array[ExtResource("1_bgiar")]([SubResource("Resource_c6gvg")])
+metadata/_custom_type_script = "uid://cx1dnupdphjwv"

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bnt2avxabkpog"]
+
+[ext_resource type="PackedScene" uid="uid://dmmq1dewbj7q3" path="res://scenes/_base/_WorldEnvironment.tscn" id="1_kt1x1"]
+[ext_resource type="Texture2D" uid="uid://c01anp4be5fsi" path="res://assets/Platformer/Platformer Assets Base/PNG/Items/cactus.png" id="2_mtxye"]
+
+[node name="TreeEnvironment" unique_id=633417349 instance=ExtResource("1_kt1x1")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=1812133195]
+texture = ExtResource("2_mtxye")

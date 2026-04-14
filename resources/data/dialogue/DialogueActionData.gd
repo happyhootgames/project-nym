@@ -16,6 +16,5 @@ enum Type {
 @export var item_stacks: Array[ItemStack]
 @export var quest_id: StringName = &""
 @export var increment_friendship_amount: int
-
 @export var next_node: DialogueNode
 @export var error_node: DialogueNode

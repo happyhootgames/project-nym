@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="HarvestePointData" format=3 uid="uid://chqnfirsc8e38"]
+[gd_resource type="Resource" script_class="HarvestPointData" format=3 uid="uid://chqnfirsc8e38"]
 
 [ext_resource type="Script" uid="uid://0rqbp4cvakyu" path="res://resources/data/items/ItemStack.gd" id="1_iot2j"]
 [ext_resource type="Resource" uid="uid://xtjk6s2nj8gi" path="res://resources/items/flowers/poppy_item.tres" id="2_41pla"]

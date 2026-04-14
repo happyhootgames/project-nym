@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dmmq1dewbj7q3"]
+
+[ext_resource type="Script" uid="uid://btuqv4riiilsi" path="res://scenes/components/wind_component.gd" id="1_ugh3q"]
+
+[node name="_WorldEnvironment" type="Node2D" unique_id=633417349]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1812133195]
+
+[node name="WindComponent" type="Node2D" parent="." unique_id=143582916 node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_ugh3q")
+sprite = NodePath("../Sprite2D")
+metadata/_custom_type_script = "uid://btuqv4riiilsi"

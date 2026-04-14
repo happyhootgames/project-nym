@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bl73kifschryu" path="res://ui/scripts/exploring_ui.gd" id="1_b7r5o"]
 [ext_resource type="PackedScene" uid="uid://cspotdl5bni25" path="res://ui/QuestFollowupUI.tscn" id="2_6rvgi"]
 
-[node name="ExploringUI" type="Control" unique_id=1150668020 node_paths=PackedStringArray("helper_label")]
+[node name="ExploringUI" type="Control" unique_id=1150668020 node_paths=PackedStringArray("helper_label", "hour_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,6 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_b7r5o")
 helper_label = NodePath("VBoxContainer/PromptLabel")
+hour_label = NodePath("VBoxContainer/HBoxContainer/HourLabel")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1126390890]
 layout_mode = 1
@@ -27,6 +28,11 @@ size_flags_vertical = 3
 
 [node name="QuestFollowupUi" parent="VBoxContainer/HBoxContainer" unique_id=1063076716 instance=ExtResource("2_6rvgi")]
 layout_mode = 2
+
+[node name="HourLabel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=184602936]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "10"
 
 [node name="PromptLabel" type="Label" parent="VBoxContainer" unique_id=47945851]
 visible = false

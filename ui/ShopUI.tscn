@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://o4h0de77amit"]
+
+[ext_resource type="Script" uid="uid://db0g87c84yp6b" path="res://ui/shop_ui.gd" id="1_mfjob"]
+[ext_resource type="PackedScene" uid="uid://cuvctctwqcm8s" path="res://ui/ShopItemCard.tscn" id="2_1osv4"]
+[ext_resource type="Texture2D" uid="uid://cuoi766n1xo3g" path="res://assets/Platformer/Platformer Assets Base/PNG/HUD/hud_gem_blue.png" id="2_kybd5"]
+
+[node name="ShopUI" type="Control" unique_id=2077105720 node_paths=PackedStringArray("shop_name_label", "currency_amount_label", "item_grid", "item_name_label", "item_price_label", "buy_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mfjob")
+shop_name_label = NodePath("PanelContainer/VBoxContainer/HeaderHBoxContainer/ShopNameLabel")
+currency_amount_label = NodePath("PanelContainer/VBoxContainer/HeaderHBoxContainer/WalletHBoxContainer/CurrencyAmountLabel")
+item_grid = NodePath("PanelContainer/VBoxContainer/GridContainer")
+item_name_label = NodePath("PanelContainer/VBoxContainer/FooterHBoxContainer/ItemInfosVBoxContainer/ItemNameLabel")
+item_price_label = NodePath("PanelContainer/VBoxContainer/FooterHBoxContainer/ItemInfosVBoxContainer/ItemPriceLabel")
+buy_button = NodePath("PanelContainer/VBoxContainer/FooterHBoxContainer/BuyButton")
+item_card_scene = ExtResource("2_1osv4")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1205520602]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=567802185]
+layout_mode = 2
+
+[node name="HeaderHBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=570774035]
+layout_mode = 2
+
+[node name="ShopNameLabel" type="Label" parent="PanelContainer/VBoxContainer/HeaderHBoxContainer" unique_id=1190348917]
+layout_mode = 2
+
+[node name="WalletHBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HeaderHBoxContainer" unique_id=679691026]
+layout_mode = 2
+
+[node name="CurrencyTextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/HeaderHBoxContainer/WalletHBoxContainer" unique_id=1978745728]
+layout_mode = 2
+texture = ExtResource("2_kybd5")
+
+[node name="CurrencyAmountLabel" type="Label" parent="PanelContainer/VBoxContainer/HeaderHBoxContainer/WalletHBoxContainer" unique_id=1666845269]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/VBoxContainer" unique_id=699179190]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer" unique_id=1909527170]
+layout_mode = 2
+
+[node name="FooterHBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1468466139]
+layout_mode = 2
+
+[node name="ItemInfosVBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/FooterHBoxContainer" unique_id=4543451]
+layout_mode = 2
+
+[node name="ItemNameLabel" type="Label" parent="PanelContainer/VBoxContainer/FooterHBoxContainer/ItemInfosVBoxContainer" unique_id=715106975]
+layout_mode = 2
+
+[node name="ItemPriceLabel" type="Label" parent="PanelContainer/VBoxContainer/FooterHBoxContainer/ItemInfosVBoxContainer" unique_id=818152937]
+layout_mode = 2
+
+[node name="BuyButton" type="Button" parent="PanelContainer/VBoxContainer/FooterHBoxContainer" unique_id=1646082723]
+layout_mode = 2

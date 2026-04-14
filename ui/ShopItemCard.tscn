@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cuvctctwqcm8s"]
+
+[ext_resource type="Script" uid="uid://bm4s43x2lvvrx" path="res://ui/shop_item_card.gd" id="1_7adbq"]
+
+[node name="ShopItemCard" type="Button" unique_id=1774130963 node_paths=PackedStringArray("icon_rect", "name_label", "price_label")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7adbq")
+icon_rect = NodePath("VBoxContainer/IconTextureRect")
+name_label = NodePath("VBoxContainer/NameLabel")
+price_label = NodePath("VBoxContainer/PriceLabel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2076565958]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="IconTextureRect" type="TextureRect" parent="VBoxContainer" unique_id=132974375]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="VBoxContainer" unique_id=272385389]
+layout_mode = 2
+
+[node name="PriceLabel" type="Label" parent="VBoxContainer" unique_id=674791030]
+layout_mode = 2

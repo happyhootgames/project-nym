@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bmx05dlgv6lu7"]
+
+[ext_resource type="Script" uid="uid://d1qq24umaciqs" path="res://scenes/weather/weather_effects.gd" id="1_ms23w"]
+
+[node name="WeatherLayer" type="CanvasLayer" unique_id=1598672660]
+layer = 5
+
+[node name="WeatherEffects" type="Node2D" parent="." unique_id=1197794184]
+script = ExtResource("1_ms23w")

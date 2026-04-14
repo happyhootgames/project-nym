@@ -496,6 +496,10 @@ func _find_closest_interactable() -> void:
 
 	previous_closest_interactable = closest_interactable
 	closest_interactable = best
+	if closest_interactable != previous_closest_interactable:
+		closest_interactable.highlight()
+		if previous_closest_interactable != null:
+			previous_closest_interactable.unhighlight()
 
 	if closest_interactable != null:
 		# UI resolves the label from the action name — player stays decoupled.

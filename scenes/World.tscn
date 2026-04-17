@@ -239,6 +239,53 @@ sources/11 = SubResource("TileSetAtlasSource_ngql4")
 sources/12 = SubResource("TileSetAtlasSource_b64vv")
 sources/13 = SubResource("TileSetAtlasSource_agajo")
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_128ka"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_agajo"]
+_limits = [0.0, 0.3, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49782604, 0.3), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2pad8"]
+curve = SubResource("Curve_agajo")
+
+[sub_resource type="Gradient" id="Gradient_e4yt5"]
+offsets = PackedFloat32Array(0.0023041475, 1)
+colors = PackedColorArray(1, 1, 1, 0.078431375, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_x70b3"]
+gradient = SubResource("Gradient_e4yt5")
+
+[sub_resource type="Curve" id="Curve_128ka"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ngql4"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 16.88269), 0.0, 0.0, 0, 0, Vector2(0.50652176, 100), 0.0, 0.0, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_b64vv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_agajo"]
+curve_x = SubResource("Curve_128ka")
+curve_y = SubResource("Curve_ngql4")
+curve_z = SubResource("Curve_b64vv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2pad8"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1000, 800, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 7000, 0)
+scale_min = 0.19999999
+scale_curve = SubResource("CurveXYZTexture_agajo")
+color_initial_ramp = SubResource("GradientTexture1D_x70b3")
+alpha_curve = SubResource("CurveTexture_2pad8")
+
 [node name="World" type="Node2D" unique_id=1984237004]
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=973787754]
@@ -376,3 +423,10 @@ script = ExtResource("29_aqlsr")
 metadata/_custom_type_script = "uid://dvh6r3nwpkuam"
 
 [node name="WeatherLayer" parent="." unique_id=1598672660 instance=ExtResource("30_n2fr6")]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="WeatherLayer" unique_id=56473044]
+material = SubResource("CanvasItemMaterial_128ka")
+position = Vector2(766, 247)
+amount = 8000
+preprocess = 0.5
+process_material = SubResource("ParticleProcessMaterial_2pad8")

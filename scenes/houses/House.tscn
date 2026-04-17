@@ -81,10 +81,11 @@ parent_house = NodePath("..")
 [node name="DoorSprite2D" type="Sprite2D" parent="Door" unique_id=622132683]
 texture = ExtResource("4_cmj1i")
 
-[node name="DoorInteractable" type="Area2D" parent="Door" unique_id=1612946000]
+[node name="DoorInteractable" type="Area2D" parent="Door" unique_id=1612946000 node_paths=PackedStringArray("sprite")]
 collision_layer = 64
 collision_mask = 0
 script = ExtResource("6_2dpju")
+sprite = NodePath("../DoorSprite2D")
 metadata/_custom_type_script = "uid://61n2ouwa51va"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door/DoorInteractable" unique_id=185397392]

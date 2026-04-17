@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://2it3ld40vw4k"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pn5b2"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -200, 0)
+emission_shape = 3
+emission_box_extents = Vector3(350, 1, 1)
+gravity = Vector3(0, 98, 0)
+
+[node name="TestScene" type="Node2D" unique_id=973222447]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=299212971]
+position = Vector2(600, 201)
+amount = 1000
+process_material = SubResource("ParticleProcessMaterial_pn5b2")

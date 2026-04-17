@@ -91,10 +91,10 @@ func _tick_minute() -> void:
 			day_changed.emit(current_day)
 
 		# Emit hour signal once per in-game hour
-		hour_changed.emit(current_hour)
-		if current_hour == 9:
-			WeatherManager.force_weather(WeatherManager.WeatherType.RAIN, 24)
-			
+		#hour_changed.emit(current_hour)
+		#if current_hour == 9:
+			#WeatherManager.force_weather(WeatherManager.WeatherType.RAIN, 24)
+			#
 
 		# Check if the phase needs to change
 		_evaluate_phase()

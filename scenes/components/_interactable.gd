@@ -86,7 +86,8 @@ func _ready() -> void:
 func highlight() -> void:
 	#if not _canvas_group:
 		#return
-	sprite.material = _highlight_material
+	pass
+	#sprite.material = _highlight_material
 
 
 ## Désactive le contour
